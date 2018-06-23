@@ -1,6 +1,7 @@
 package com.wcfvol.onlinejudge.po;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -9,6 +10,7 @@ import java.util.Date;
  */
 @Data
 public class Announcements {
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
     private int id;
     private String title;

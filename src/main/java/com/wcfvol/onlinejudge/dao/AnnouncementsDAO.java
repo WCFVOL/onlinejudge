@@ -10,12 +10,12 @@ import java.util.List;
  */
 @Mapper
 public interface AnnouncementsDAO {
-    String TABLE_NAME = "user";
-    String INSET_FIELDS = " title, date, author, author_id, contest ";
+    String TABLE_NAME = "announcements";
+    String INSET_FIELDS = " title, date, author, author_id, content ";
     String SELECT_FIELDS = " id, name, password, salt, head_url";
     @Select("SELECT * FROM announcements")
     List<Announcements> queryAll();
 
-    @Insert({"INSERT INTO ",TABLE_NAME," ( ",INSET_FIELDS, ") VALUES (#{title}, #{date} , #{author}, #{authorId}, #{contest})" })
+    @Insert({"INSERT INTO ",TABLE_NAME," ( ",INSET_FIELDS, ") VALUES (#{title}, #{date} , #{author}, #{authorId}, #{content})" })
     void addAnnouncement(Announcements announcements);
 }

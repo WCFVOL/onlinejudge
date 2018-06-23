@@ -1,5 +1,6 @@
 package com.wcfvol.onlinejudge.controller;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.wcfvol.onlinejudge.po.Announcements;
 import com.wcfvol.onlinejudge.service.AnnouncementsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ public class HomeController {
     @RequestMapping(value = "/addAnnouncement",method = RequestMethod.POST)
     @ResponseBody
     public String addAnnouncement(@RequestBody Announcements announcements) {
-        return String.valueOf(announcements);
+        announcementsService.addAnnouncements(announcements);
+        return "{\"ok\":1}";
     }
 }
