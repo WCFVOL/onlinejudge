@@ -1,5 +1,20 @@
 package com.wcfvol.onlinejudge.service.impl;
 
-public class AnnouncementsServiceImpl {
-    
+import com.wcfvol.onlinejudge.dao.AnnouncementsDAO;
+import com.wcfvol.onlinejudge.po.Announcements;
+import com.wcfvol.onlinejudge.service.AnnouncementsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class AnnouncementsServiceImpl implements AnnouncementsService {
+    @Autowired
+    AnnouncementsDAO announcementsDAO;
+
+    @Override
+    public List<Announcements> getAllAnnouncements() {
+        return announcementsDAO.queryAll();
+    }
 }

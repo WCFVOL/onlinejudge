@@ -1,5 +1,9 @@
 package com.wcfvol.onlinejudge.service;
 
-public interface AnnouncementsService {
+import com.wcfvol.onlinejudge.po.Announcements;
 
+import java.util.List;
+
+public interface AnnouncementsService {
+    public List<Announcements> getAllAnnouncements() ;
 }
