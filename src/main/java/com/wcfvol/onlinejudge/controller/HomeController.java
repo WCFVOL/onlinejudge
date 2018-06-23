@@ -12,6 +12,7 @@ import java.util.List;
  * @author Wang Chunfei
  */
 @Controller
+@RequestMapping(value = "/api")
 public class HomeController {
 
     @Autowired
