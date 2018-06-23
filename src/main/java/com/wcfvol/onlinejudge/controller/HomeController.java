@@ -18,9 +18,14 @@ public class HomeController {
     private AnnouncementsService announcementsService;
 
 
-    @RequestMapping(value = "/announcement",method = RequestMethod.GET)
+    @RequestMapping(value = "/announcements",method = RequestMethod.GET)
     @ResponseBody
     public List<Announcements> getAnnouncements() {
         return announcementsService.getAllAnnouncements();
+    }
+    @RequestMapping(value = "/addAnnouncement",method = RequestMethod.POST)
+    @ResponseBody
+    public String addAnnouncement(@RequestBody Announcements announcements) {
+        return String.valueOf(announcements);
     }
 }

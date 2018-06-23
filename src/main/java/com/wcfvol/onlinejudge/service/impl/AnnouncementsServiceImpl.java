@@ -17,4 +17,9 @@ public class AnnouncementsServiceImpl implements AnnouncementsService {
     public List<Announcements> getAllAnnouncements() {
         return announcementsDAO.queryAll();
     }
+
+    @Override
+    public void addAnnouncements(Announcements announcements) {
+        announcementsDAO.addAnnouncement(announcements);
+    }
 }
