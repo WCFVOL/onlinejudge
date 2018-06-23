@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.*;
  */
 @Controller
 public class HomeController {
-    @RequestMapping(value = "announcement",method = RequestMethod.GET)
+
+    @RequestMapping(value = "/announcement",method = RequestMethod.GET)
+    @ResponseBody
     public Announcements getAnnouncements() {
         //todo
         return new Announcements();

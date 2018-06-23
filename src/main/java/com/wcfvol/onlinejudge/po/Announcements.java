@@ -14,4 +14,5 @@ public class Announcements {
     private String title;
     private String author;
     private String content;
+    private int authorId;
 }
