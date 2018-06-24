@@ -1,6 +1,7 @@
 package com.wcfvol.onlinejudge.controller;
 
 import com.wcfvol.onlinejudge.po.Authenticate;
+import com.wcfvol.onlinejudge.po.User;
 import com.wcfvol.onlinejudge.service.AuthService;
 import com.wcfvol.onlinejudge.service.UserService;
 import com.wcfvol.onlinejudge.util.MD5;
@@ -47,6 +48,10 @@ public class UserController {
         authenticate.setUsername(username);
         if (authService.saveAuth(authenticate)){
             jsonpObject.put("ok",1);
+            User user=new User();
+            user.setUsername(username);
+            user.setEmail(email);
+            userService.addUser(user);
         }
         else {
             jsonpObject.put("ok",0);

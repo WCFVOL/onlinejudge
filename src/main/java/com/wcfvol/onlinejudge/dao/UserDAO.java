@@ -8,11 +8,11 @@ import org.apache.ibatis.annotations.*;
 public interface UserDAO {
     String TABLE_NAME = "user";
     String INSET_FIELDS = " user_id, username, email, solved, attempt ";
-    String SELECT_FIELDS = " id, user_id, username, email, solved, attempt ";
+    String SELECT_FIELDS = " id, username, email, solved, attempt ";
 
-    @Select({" SELECT ",SELECT_FIELDS," FROM ",TABLE_NAME," WHERE user_id = #{userId} "})
-    User getUserByUserId(int userId);
+    @Select({" SELECT ",SELECT_FIELDS," FROM ",TABLE_NAME," WHERE username = #{username} "})
+    User getUserByUsername(String username);
 
-    @Insert({"INSERT INTO ",TABLE_NAME," ( ",INSET_FIELDS," ) VALUE (#{userId}, #{username}, #{email}, #{solved}, #{attempt} ) "})
+    @Insert({"INSERT INTO ",TABLE_NAME," ( ",INSET_FIELDS," ) VALUE ( #{username}, #{email}, #{solved}, #{attempt} ) "})
     void addUser(User user);
 }
