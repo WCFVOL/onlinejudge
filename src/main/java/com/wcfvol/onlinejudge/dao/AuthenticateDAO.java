@@ -16,4 +16,7 @@ public interface AuthenticateDAO {
 
     @Select({"SELECT ",SELECT_FIELDS," FROM ",TABLE_NAME," WHERE username = #{username}"})
     List<Authenticate> getAuthByUsername(String username);
+
+    @Select({"SELECT salt FROM ",TABLE_NAME," WHERE username = #{username}"})
+    String getSaltByUsername(String username);
 }

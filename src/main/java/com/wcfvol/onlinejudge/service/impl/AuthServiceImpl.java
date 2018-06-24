@@ -26,4 +26,15 @@ public class AuthServiceImpl implements AuthService {
         }
         return false;
     }
+
+    @Override
+    public List<Authenticate> getAuth(String username) {
+        return authenticateDAO.getAuthByUsername(username);
+    }
+
+
+    @Override
+    public String getSalt(String username) {
+        return authenticateDAO.getSaltByUsername(username);
+    }
 }

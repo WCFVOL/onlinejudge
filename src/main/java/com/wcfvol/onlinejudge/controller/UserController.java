@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -58,6 +59,39 @@ public class UserController {
             jsonpObject.put("msg","Account has already existed!");
         }
         return jsonpObject.toString();
+    }
 
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    @ResponseBody
+    public String login(@RequestBody String body) {
+        JSONObject jsonBody = new JSONObject(body);
+        JSONObject jsonResult = new JSONObject();
+        String username = jsonBody.getString("username");
+        String password = jsonBody.getString("password");
+        List authList = authService.getAuth(username);
+        if (authList.isEmpty()) {
+            jsonResult.put("ok",0);
+            jsonResult.put("msg","account does not exit");
+            return jsonResult.toString();
+        }
+        Authenticate auth = (Authenticate) authList.get(0);
+        String newPassword = MD5.toMD5(password+auth.getSalt());
+        if (newPassword.equals(auth.getPassword())) {
+            jsonResult.put("ok",1);
+            // TODO: 2018/6/24  cookie
+            jsonResult.put("cookie","cookie");
+        }
+        else {
+            jsonResult.put("ok",0);
+            jsonResult.put("msg","password is not correct");
+        }
+        return jsonResult.toString();
+    }
+
+    @RequestMapping(value = "/loginbycookie",method = RequestMethod.POST)
+    @ResponseBody
+    public String loginByCookie(@RequestBody String body) {
+        // TODO: 2018/6/24
+        return null;
     }
 }
