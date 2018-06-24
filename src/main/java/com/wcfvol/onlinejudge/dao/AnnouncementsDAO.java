@@ -12,7 +12,7 @@ import java.util.List;
 public interface AnnouncementsDAO {
     String TABLE_NAME = "announcements";
     String INSET_FIELDS = " title, date, author, author_id, content ";
-    String SELECT_FIELDS = " id, name, password, salt, head_url";
+    String SELECT_FIELDS = " id, title, date, author, author_id, content ";
     @Select("SELECT * FROM announcements")
     List<Announcements> queryAll();
 

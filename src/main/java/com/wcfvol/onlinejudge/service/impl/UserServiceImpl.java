@@ -1,4 +1,28 @@
 package com.wcfvol.onlinejudge.service.impl;
 
-public class UserServiceImpl {
+import com.wcfvol.onlinejudge.dao.UserDAO;
+import com.wcfvol.onlinejudge.po.User;
+import com.wcfvol.onlinejudge.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+/**
+ * @author Wang Chunfei
+ */
+@Service
+public class UserServiceImpl implements UserService {
+
+    @Autowired
+    UserDAO userDAO;
+
+    @Override
+    public User getUser(int userId) {
+        return userDAO.getUserByUserId(userId);
+    }
+
+    @Override
+    public void addUser(User user) {
+        userDAO.addUser(user);
+    }
+
 }

@@ -1,4 +1,8 @@
 package com.wcfvol.onlinejudge.service;
 
-public class UserService {
+import com.wcfvol.onlinejudge.po.User;
+
+public interface UserService {
+    User getUser(int userId);
+    void addUser(User user);
 }
