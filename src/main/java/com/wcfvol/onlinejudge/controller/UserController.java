@@ -1,6 +1,5 @@
 package com.wcfvol.onlinejudge.controller;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.wcfvol.onlinejudge.po.Authenticate;
 import com.wcfvol.onlinejudge.service.AuthService;
 import com.wcfvol.onlinejudge.service.UserService;
