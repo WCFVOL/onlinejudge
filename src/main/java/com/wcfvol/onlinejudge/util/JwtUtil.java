@@ -32,4 +32,17 @@ public class JwtUtil {
             throw new IllegalStateException("Invalid Token. "+e.getMessage());
         }
     }
+
+    public static String getUsernameFromToken(String token) {
+        try {
+            // parse the token.
+            Map<String, Object> body = Jwts.parser()
+                    .setSigningKey(SECRET)
+                    .parseClaimsJws(token.replace("Bearer ",""))
+                    .getBody();
+            return (String) body.get("username");
+        }catch (Exception e){
+            throw new IllegalStateException("Invalid Token. "+e.getMessage());
+        }
+    }
 }
