@@ -9,6 +9,7 @@ import com.wcfvol.onlinejudge.util.JwtUtil;
 import com.wcfvol.onlinejudge.util.MD5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,9 +29,9 @@ public class AccountController {
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     @ResponseBody
+    @Transactional
     public String register(@RequestBody String body
                            ) {
-
         JSONObject jsonResult = new JSONObject();
         JSONObject jsonBody = (JSONObject) JSONObject.parse(body);
         String username = jsonBody.getString("username");
@@ -84,7 +85,7 @@ public class AccountController {
             jsonResult.put("ok",1);
             if(isRemember) {
                 //默认记住7天
-                String jwt = JwtUtil.generateToken(username, 60L * 24 * 7);
+                String jwt = JwtUtil.generateToken(username, 60L * 24 * 365);
                 jsonResult.put("token", jwt);
             }
             jsonResult.put("data",userService.getUser(username));
