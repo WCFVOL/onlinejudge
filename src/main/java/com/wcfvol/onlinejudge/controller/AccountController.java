@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.UUID;
 
@@ -67,7 +69,7 @@ public class AccountController {
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
-    public String login(@RequestBody String body) {
+    public String login(@RequestBody String body, HttpServletResponse response) {
         JSONObject jsonBody = (JSONObject) JSONObject.parse(body);
         JSONObject jsonResult = new JSONObject();
         String username = jsonBody.getString("username");
@@ -84,9 +86,13 @@ public class AccountController {
         if (newPassword.equals(auth.getPassword())) {
             jsonResult.put("ok",1);
             if(isRemember) {
-                //默认记住7天
-                String jwt = JwtUtil.generateToken(username, 60L * 24 * 365);
-                jsonResult.put("token", jwt);
+                //默认记住7+3天
+                String jwt = JwtUtil.generateToken(username, 60L * 24 * 10);
+                //jsonResult.put("token", jwt);
+                Cookie cookie = new Cookie("token",jwt);
+                cookie.setMaxAge(60*60*24*7);
+                cookie.setPath("/");
+                response.addCookie(cookie);
             }
             jsonResult.put("data",userService.getUser(username));
         }
