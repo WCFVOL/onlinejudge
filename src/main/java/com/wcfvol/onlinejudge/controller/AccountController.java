@@ -1,6 +1,7 @@
 package com.wcfvol.onlinejudge.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.wcfvol.onlinejudge.filter.JwtAuthenticationFilter;
 import com.wcfvol.onlinejudge.po.Authenticate;
 import com.wcfvol.onlinejudge.po.User;
 import com.wcfvol.onlinejudge.service.AuthService;
@@ -8,6 +9,8 @@ import com.wcfvol.onlinejudge.service.UserService;
 import com.wcfvol.onlinejudge.util.JwtUtil;
 import com.wcfvol.onlinejudge.util.MD5;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -88,7 +91,6 @@ public class AccountController {
             if(isRemember) {
                 //默认记住7+3天
                 String jwt = JwtUtil.generateToken(username, 60L * 24 * 10);
-                //jsonResult.put("token", jwt);
                 Cookie cookie = new Cookie("token",jwt);
                 cookie.setMaxAge(60*60*24*7);
                 cookie.setPath("/");

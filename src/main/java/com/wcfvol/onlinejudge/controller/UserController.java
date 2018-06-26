@@ -25,4 +25,10 @@ public class UserController {
         jsonResult.put("data",user);
         return jsonResult.toJSONString();
     }
+
+    @RequestMapping(value = "/profile",method = RequestMethod.GET)
+    @ResponseBody
+    public String profile(@RequestHeader("Cookie") String cookie) {
+        return "ok";
+    }
 }
