@@ -7,6 +7,8 @@ import com.wcfvol.onlinejudge.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping(value = "/filter_api")
@@ -28,7 +30,14 @@ public class UserController {
 
     @RequestMapping(value = "/profile",method = RequestMethod.GET)
     @ResponseBody
-    public String profile(@RequestHeader("Cookie") String cookie) {
-        return "ok";
+    public String profile(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        JSONObject jsonResult = new JSONObject();
+        String token = cookies[cookies.length-1].getValue();
+        String username = JwtUtil.getUsernameFromToken(token);
+        User user = userService.getUser(username);
+        jsonResult.put("ok",1);
+        jsonResult.put("data",user);
+        return jsonResult.toJSONString();
     }
 }
