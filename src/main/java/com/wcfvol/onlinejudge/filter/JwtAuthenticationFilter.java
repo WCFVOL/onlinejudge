@@ -40,8 +40,7 @@ public class JwtAuthenticationFilter implements Filter {
                 System.out.println(cookies[i].getValue());
                 System.out.println(cookies[i].getName());
             }
-            System.out.println(456);
-            String token = cookies[0].getValue();
+            String token = cookies[cookies.length-1].getValue();
             System.out.println(token);
             // 检查jwt令牌, 如果令牌不合法或者过期, 里面会直接抛出异常, 下面的catch部分会直接返回
             JwtUtil.validateToken(token);
