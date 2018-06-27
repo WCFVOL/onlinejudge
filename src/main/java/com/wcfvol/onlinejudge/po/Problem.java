@@ -13,4 +13,5 @@ public class Problem {
     private String output;
     private String sampleInput;
     private String sampleOutput;
+    private String hint;
 }
