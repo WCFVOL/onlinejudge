@@ -1,6 +1,6 @@
 package com.wcfvol.onlinejudge.service;
 
-import com.wcfvol.onlinejudge.po.User;
+import com.wcfvol.onlinejudge.entity.User;
 
 public interface UserService {
     User getUser(String username);

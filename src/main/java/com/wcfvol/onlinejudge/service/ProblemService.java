@@ -1,6 +1,6 @@
 package com.wcfvol.onlinejudge.service;
 
-import com.wcfvol.onlinejudge.po.Problem;
+import com.wcfvol.onlinejudge.entity.Problem;
 
 public interface ProblemService {
     void addProblem(Problem problem);

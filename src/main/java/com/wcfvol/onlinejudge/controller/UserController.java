@@ -1,7 +1,7 @@
 package com.wcfvol.onlinejudge.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.wcfvol.onlinejudge.po.User;
+import com.wcfvol.onlinejudge.entity.User;
 import com.wcfvol.onlinejudge.service.UserService;
 import com.wcfvol.onlinejudge.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;

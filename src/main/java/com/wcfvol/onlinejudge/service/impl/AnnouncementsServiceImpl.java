@@ -1,7 +1,7 @@
 package com.wcfvol.onlinejudge.service.impl;
 
 import com.wcfvol.onlinejudge.dao.AnnouncementsDAO;
-import com.wcfvol.onlinejudge.po.Announcements;
+import com.wcfvol.onlinejudge.entity.Announcements;
 import com.wcfvol.onlinejudge.service.AnnouncementsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

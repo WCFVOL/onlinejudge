@@ -1,6 +1,6 @@
 package com.wcfvol.onlinejudge.service;
 
-import com.wcfvol.onlinejudge.po.Authenticate;
+import com.wcfvol.onlinejudge.entity.Authenticate;
 
 import java.util.List;
 

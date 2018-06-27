@@ -49,7 +49,7 @@ public class ProblemController {
         String sId = jsonBody.getString("id");
         int id = Integer.parseInt(sId);
         jsonResult.put("ok","1");
-        jsonResult.put("problem",problemService.getProblemById(id));
+        jsonResult.put("data",problemService.getProblemById(id));
         return jsonResult.toJSONString();
     }
 }

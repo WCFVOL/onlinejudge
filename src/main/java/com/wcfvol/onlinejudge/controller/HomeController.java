@@ -1,6 +1,6 @@
 package com.wcfvol.onlinejudge.controller;
 
-import com.wcfvol.onlinejudge.po.Announcements;
+import com.wcfvol.onlinejudge.entity.Announcements;
 import com.wcfvol.onlinejudge.service.AnnouncementsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

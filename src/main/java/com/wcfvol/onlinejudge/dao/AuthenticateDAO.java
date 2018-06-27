@@ -1,6 +1,6 @@
 package com.wcfvol.onlinejudge.dao;
 
-import com.wcfvol.onlinejudge.po.Authenticate;
+import com.wcfvol.onlinejudge.entity.Authenticate;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

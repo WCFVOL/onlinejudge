@@ -1,8 +1,8 @@
 package com.wcfvol.onlinejudge.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.wcfvol.onlinejudge.po.Authenticate;
-import com.wcfvol.onlinejudge.po.User;
+import com.wcfvol.onlinejudge.entity.Authenticate;
+import com.wcfvol.onlinejudge.entity.User;
 import com.wcfvol.onlinejudge.service.AuthService;
 import com.wcfvol.onlinejudge.service.UserService;
 import com.wcfvol.onlinejudge.util.JwtUtil;
