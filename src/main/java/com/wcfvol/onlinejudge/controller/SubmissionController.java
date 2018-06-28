@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @RequestMapping(value = "/api")
 @Controller
-// TODO: 2018/6/27 TEST 
+// TODO: 2018/6/27 TEST
 public class SubmissionController {
     @Autowired
     SubmissionService submissionService;
@@ -24,4 +24,5 @@ public class SubmissionController {
         jsonResult.put("data",submissionService.getAllSubmission());
         return jsonResult.toJSONString();
     }
+
 }
