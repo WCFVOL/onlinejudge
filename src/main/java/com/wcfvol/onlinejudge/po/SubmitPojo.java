@@ -10,14 +10,18 @@ public class SubmitPojo {
     private int userId;
     private Date date;
     private int problemId;
+    private int language;
+    private int id;
 
     @Override
     public String toString() {
         JSONObject jsonObject = new JSONObject();
+        jsonObject.put("id",id);
         jsonObject.put("code",code);
         jsonObject.put("userId",userId);
         jsonObject.put("date",date);
         jsonObject.put("problemId",problemId);
+        jsonObject.put("language",language);
         return jsonObject.toJSONString();
     }
 }

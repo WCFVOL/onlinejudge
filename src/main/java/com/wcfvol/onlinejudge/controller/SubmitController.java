@@ -1,8 +1,8 @@
 package com.wcfvol.onlinejudge.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.wcfvol.onlinejudge.entity.Submission;
 import com.wcfvol.onlinejudge.kafka.SendCode;
-import com.wcfvol.onlinejudge.po.SubmitPojo;
 import com.wcfvol.onlinejudge.service.SubmissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,13 +27,14 @@ public class SubmitController {
     public String submitCode(@RequestBody String body) throws ExecutionException, InterruptedException {
         JSONObject jsonBody = (JSONObject) JSONObject.parse(body);
         JSONObject jsonResult = new JSONObject();
-        SubmitPojo submitPojo = new SubmitPojo();
-        submitPojo.setCode(jsonBody.getString("code"));
-        submitPojo.setDate(jsonBody.getDate("date"));
-        submitPojo.setProblemId(jsonBody.getInteger("problem_id"));
-        submitPojo.setUserId(jsonBody.getInteger("user_id"));
-        submissionService.addSubmission(submitPojo);
-        sendCode.send("test",submitPojo.toString());
+        Submission submission = new Submission();
+        submission.setCode(jsonBody.getString("code"));
+        submission.setDate(jsonBody.getDate("date"));
+        submission.setProblemId(jsonBody.getInteger("problem_id"));
+        submission.setUserId(jsonBody.getInteger("user_id"));
+        submission.setLanguage(jsonBody.getInteger("language"));
+        submissionService.addSubmission(submission);
+        sendCode.send("test",submission.toSubmitString());
         jsonResult.put("ok",1);
         return jsonResult.toJSONString();
     }

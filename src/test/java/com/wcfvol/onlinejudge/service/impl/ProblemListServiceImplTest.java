@@ -25,8 +25,8 @@ public class ProblemListServiceImplTest {
         problemList.setAuthor("1234");
         problemList.setSource("1234");
         problemList.setTitle("1");
-        for (int i = 0; i < 5; ++i)
-            problemListService.addProblemList(problemList);
+        problemListService.addProblemList(problemList);
+        System.out.println(problemList.getId());
     }
 
     @Test
