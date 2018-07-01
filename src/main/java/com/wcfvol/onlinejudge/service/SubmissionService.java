@@ -9,4 +9,5 @@ public interface SubmissionService {
     void updateResult(Submission submission);
     List<Submission> getAllSubmission();
     List<Submission> getSubmissionList(int start, int size);
+    Submission getCodeByid(int id);
 }

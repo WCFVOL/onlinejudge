@@ -31,4 +31,9 @@ public class SubmissionServiceImpl implements SubmissionService {
     public List<Submission> getSubmissionList(int start, int size) {
         return submissionDAO.getSubmissionList(start,size);
     }
+
+    @Override
+    public Submission getCodeByid(int id) {
+        return submissionDAO.getCodeById(id);
+    }
 }
