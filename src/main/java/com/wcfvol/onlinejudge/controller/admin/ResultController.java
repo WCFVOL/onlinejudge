@@ -24,11 +24,11 @@ public class ResultController {
         JSONObject jsonResult = new JSONObject();
         JSONObject jsonBody = (JSONObject) JSONObject.parse(body);
         Submission submission = new Submission();
-        submission.setId(jsonBody.getInteger("id"));
-        submission.setLength(jsonBody.getInteger("length"));
-        submission.setMemory(jsonBody.getInteger("memory"));
-        submission.setTime(jsonBody.getDouble("time"));
-        submission.setResult(jsonBody.getInteger("result"));
+        submission.setId(jsonBody.getInteger("Id"));
+        submission.setLength(jsonBody.getInteger("Length"));
+        submission.setMemory(jsonBody.getInteger("Memory"));
+        submission.setTime(jsonBody.getDouble("Time"));
+        submission.setResult(jsonBody.getInteger("Result"));
         submissionService.updateResult(submission);
         jsonResult.put("ok",1);
         return jsonResult.toJSONString();
