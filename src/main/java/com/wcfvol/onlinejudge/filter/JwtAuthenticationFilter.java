@@ -13,9 +13,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class JwtAuthenticationFilter implements Filter {
-    private static final Set<String> ALLOWED_PATHS = Collections.unmodifiableSet(new HashSet<>(
-            Arrays.asList("", "/login", "/logout", "/register")));
-
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

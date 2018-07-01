@@ -26,4 +26,9 @@ public class SubmissionServiceImpl implements SubmissionService {
     public List<Submission> getAllSubmission() {
         return submissionDAO.getAllSubmission();
     }
+
+    @Override
+    public List<Submission> getSubmissionList(int start, int size) {
+        return submissionDAO.getSubmissionList(start,size);
+    }
 }

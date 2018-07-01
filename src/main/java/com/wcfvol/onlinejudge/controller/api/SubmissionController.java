@@ -1,4 +1,4 @@
-package com.wcfvol.onlinejudge.controller;
+package com.wcfvol.onlinejudge.controller.api;
 
 import com.alibaba.fastjson.JSONObject;
 import com.wcfvol.onlinejudge.service.SubmissionService;

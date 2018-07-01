@@ -1,4 +1,4 @@
-package com.wcfvol.onlinejudge.controller;
+package com.wcfvol.onlinejudge.controller.api;
 
 import com.wcfvol.onlinejudge.entity.Announcements;
 import com.wcfvol.onlinejudge.service.AnnouncementsService;

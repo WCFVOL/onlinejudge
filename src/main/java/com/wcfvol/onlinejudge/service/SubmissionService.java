@@ -8,4 +8,5 @@ public interface SubmissionService {
     void addSubmission(Submission submission);
     void updateResult(Submission submission);
     List<Submission> getAllSubmission();
+    List<Submission> getSubmissionList(int start, int size);
 }
