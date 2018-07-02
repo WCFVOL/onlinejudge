@@ -1,4 +1,4 @@
-package com.wcfvol.onlinejudge.controller.filter_api;
+package com.wcfvol.onlinejudge.controller.filterapi;
 
 import com.alibaba.fastjson.JSONObject;
 import com.wcfvol.onlinejudge.entity.Submission;
@@ -16,6 +16,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * @author Wang Chunfei
+ */
 @Controller
 @RequestMapping(value = "/filter_api")
 public class CodeController {
@@ -30,6 +33,7 @@ public class CodeController {
     @ResponseBody
     public RestResult submitCode(@RequestBody String body) throws ExecutionException, InterruptedException {
         JSONObject jsonBody = (JSONObject) JSONObject.parse(body);
+        System.out.println(body);
         Submission submission = new Submission();
         submission.setCode(jsonBody.getString("code"));
         submission.setDate(jsonBody.getDate("date"));
@@ -38,7 +42,7 @@ public class CodeController {
         submission.setLanguage(jsonBody.getInteger("language"));
         submissionService.addSubmission(submission);
         sendCode.send("test",submission.toSubmitString());
-        return RestResult.ok();
+        return RestResult.ok().setData(submission);
     }
 
     @RequestMapping(value = "/code/{id}",method = RequestMethod.GET)

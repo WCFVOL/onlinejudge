@@ -9,7 +9,7 @@ public class RegisterBean {
     @Bean
     public FilterRegistrationBean myFilter() {
         FilterRegistrationBean myFilter = new FilterRegistrationBean();
-        myFilter.addUrlPatterns("/filter_api/*");
+        myFilter.addUrlPatterns("/filterapi/*");
         myFilter.setFilter(new JwtAuthenticationFilter());
         return myFilter;
     }

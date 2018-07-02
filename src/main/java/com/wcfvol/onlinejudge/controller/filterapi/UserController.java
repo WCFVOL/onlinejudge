@@ -1,4 +1,4 @@
-package com.wcfvol.onlinejudge.controller.filter_api;
+package com.wcfvol.onlinejudge.controller.filterapi;
 
 import com.alibaba.fastjson.JSONObject;
 import com.wcfvol.onlinejudge.entity.User;
