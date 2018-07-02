@@ -1,6 +1,7 @@
 package com.wcfvol.onlinejudge.controller.api;
 
 import com.wcfvol.onlinejudge.entity.Announcements;
+import com.wcfvol.onlinejudge.po.RestResult;
 import com.wcfvol.onlinejudge.service.AnnouncementsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,13 +22,13 @@ public class HomeController {
 
     @RequestMapping(value = "/announcements",method = RequestMethod.GET)
     @ResponseBody
-    public List<Announcements> getAnnouncements() {
-        return announcementsService.getAllAnnouncements();
+    public RestResult getAnnouncements() {
+        return RestResult.ok().setData( announcementsService.getAllAnnouncements());
     }
     @RequestMapping(value = "/addAnnouncement",method = RequestMethod.POST)
     @ResponseBody
-    public String addAnnouncement(@RequestBody Announcements announcements) {
+    public RestResult addAnnouncement(@RequestBody Announcements announcements) {
         announcementsService.addAnnouncements(announcements);
-        return "{\"ok\":1}";
+        return RestResult.ok();
     }
 }

@@ -2,6 +2,7 @@ package com.wcfvol.onlinejudge.controller.filter_api;
 
 import com.alibaba.fastjson.JSONObject;
 import com.wcfvol.onlinejudge.entity.User;
+import com.wcfvol.onlinejudge.po.RestResult;
 import com.wcfvol.onlinejudge.service.UserService;
 import com.wcfvol.onlinejudge.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,14 +31,10 @@ public class UserController {
 
     @RequestMapping(value = "/profile",method = RequestMethod.GET)
     @ResponseBody
-    public String profile(HttpServletRequest request) {
+    public RestResult profile(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
-        JSONObject jsonResult = new JSONObject();
         String token = cookies[cookies.length-1].getValue();
         String username = JwtUtil.getUsernameFromToken(token);
-        User user = userService.getUser(username);
-        jsonResult.put("ok",1);
-        jsonResult.put("data",user);
-        return jsonResult.toJSONString();
+        return RestResult.ok().setData(userService.getUser(username));
     }
 }
