@@ -35,5 +35,6 @@ public class SubmissionServiceImplTest {
 
     @Test
     public void getAllSubmission() {
+        System.out.println(submissionService.getAllSubmission());
     }
 }

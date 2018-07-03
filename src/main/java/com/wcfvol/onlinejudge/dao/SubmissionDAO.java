@@ -20,7 +20,7 @@ public interface SubmissionDAO {
     @Update({"UPDATE ",TABLE_NAME," SET result=#{result}, time=#{time}, memory=#{memory}, length=#{length}  WHERE id=#{id}"})
     void addResult(Submission submission);
 
-    @Select({"SELECT ",SELECT_FIELDS," FROM ",TABLE_NAME})
+    @Select({"SELECT ",SELECT_FIELDS," FROM ",TABLE_NAME,"ORDER BY id DESC"})
     List<Submission> getAllSubmission();
 
     @Select({"SELECT ", SELECT_LIST," FROM ",TABLE_NAME," LIMIT #{start}, #{size}"})
