@@ -11,7 +11,7 @@ public interface SubmissionDAO {
     String TABLE_NAME = "submissions";
     String INSERT_FIELDS_SUBMIT = " code, user_id, date, problem_id ,language ";
     String UPDATE_FIELDS_RESULT = " result, time, memory, length ";
-    String SELECT_FIELDS = " id, code, user_id, date, problem_id, result, time, memory, length ,language";
+    String SELECT_FIELDS = " id, user_id, date, problem_id, result, time, memory, length ,language";
     String SELECT_LIST = " id, user_id, date, problem_id, result, time, memory, length ,language";
 
     @Insert({"INSERT INTO ",TABLE_NAME,"(",INSERT_FIELDS_SUBMIT,") VALUES (#{code},#{userId},#{date},#{problemId},#{language}) "})
