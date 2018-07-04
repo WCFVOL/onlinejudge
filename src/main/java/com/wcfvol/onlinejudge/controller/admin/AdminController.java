@@ -21,7 +21,7 @@ import java.io.File;
  **/
 @RestController
 @RequestMapping(value = "/admin")
-public class ResultController {
+public class AdminController {
     @Autowired
     SubmissionService submissionService;
     @Autowired
