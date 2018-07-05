@@ -29,7 +29,6 @@ public class AdminController {
     @Autowired
     ProblemListService problemListService;
 
-
     @RequestMapping(value = "/set_result",method = RequestMethod.POST)
     public RestResult setResult(@RequestBody String body) {
         JSONObject jsonBody = (JSONObject) JSONObject.parse(body);

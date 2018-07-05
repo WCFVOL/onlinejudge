@@ -9,4 +9,5 @@ public class User {
     private String email;
     private int solved;
     private int attempt;
+    private int isAdmin;
 }
