@@ -4,7 +4,9 @@ import com.alibaba.fastjson.JSONObject;
 import com.wcfvol.onlinejudge.entity.Problem;
 import com.wcfvol.onlinejudge.entity.ProblemList;
 import com.wcfvol.onlinejudge.entity.Submission;
+import com.wcfvol.onlinejudge.kafka.SendCode;
 import com.wcfvol.onlinejudge.po.RestResult;
+import com.wcfvol.onlinejudge.po.TaskPojo;
 import com.wcfvol.onlinejudge.service.ProblemListService;
 import com.wcfvol.onlinejudge.service.ProblemService;
 import com.wcfvol.onlinejudge.service.SubmissionService;
@@ -13,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
+import java.util.concurrent.ExecutionException;
 
 /**
  * @ClassName ResultController
@@ -28,6 +31,8 @@ public class AdminController {
     ProblemService problemService;
     @Autowired
     ProblemListService problemListService;
+    @Autowired
+    SendCode sendCode;
 
     @RequestMapping(value = "/set_result",method = RequestMethod.POST)
     public RestResult setResult(@RequestBody String body) {
@@ -65,8 +70,12 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/add_input_output",method = RequestMethod.POST)
-    public RestResult addInputOutput(@RequestParam("input")File input, @RequestParam("output") File output) {
-        // TODO: 2018/7/2  
+    public RestResult addInputOutput(@RequestParam("input")File input, @RequestParam("output") File output) throws ExecutionException, InterruptedException {
+        // TODO: 2018/7/2
+        TaskPojo task = new TaskPojo();
+        task.setTaskId(2);
+        // task.setData();
+        sendCode.send("text",task.toString());
         return RestResult.ok();
     }
 

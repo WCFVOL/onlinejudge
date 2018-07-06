@@ -5,6 +5,7 @@ import com.wcfvol.onlinejudge.entity.Submission;
 import com.wcfvol.onlinejudge.entity.User;
 import com.wcfvol.onlinejudge.kafka.SendCode;
 import com.wcfvol.onlinejudge.po.RestResult;
+import com.wcfvol.onlinejudge.po.TaskPojo;
 import com.wcfvol.onlinejudge.service.SubmissionService;
 import com.wcfvol.onlinejudge.service.UserService;
 import com.wcfvol.onlinejudge.util.JwtUtil;
@@ -41,7 +42,10 @@ public class CodeController {
         submission.setUserId(jsonBody.getInteger("user_id"));
         submission.setLanguage(jsonBody.getInteger("language"));
         submissionService.addSubmission(submission);
-        sendCode.send("test",submission.toSubmitString());
+        TaskPojo task = new TaskPojo();
+        task.setData(submission.toSubmitString());
+        task.setTaskId(1);
+        sendCode.send("test",task.toString());
         return RestResult.ok().setData(submission);
     }
 
