@@ -10,6 +10,7 @@ public class AdminFilterRegisterBean {
     public FilterRegistrationBean adminFilter() {
         FilterRegistrationBean myFilter = new FilterRegistrationBean();
         myFilter.addUrlPatterns("/admin/*");
+        myFilter.setOrder(1);
         myFilter.setFilter(new AdminFilter());
         return myFilter;
     }

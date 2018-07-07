@@ -7,9 +7,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class RegisterBean {
     @Bean
-    public FilterRegistrationBean myFilter() {
-        FilterRegistrationBean myFilter = new FilterRegistrationBean();
-        myFilter.addUrlPatterns("/filterapi/*");
+    public FilterRegistrationBean<JwtAuthenticationFilter> myFilter() {
+        FilterRegistrationBean<JwtAuthenticationFilter> myFilter = new FilterRegistrationBean<>();
+        myFilter.addUrlPatterns("/filter_api/*");
+        myFilter.setOrder(0);
         myFilter.setFilter(new JwtAuthenticationFilter());
         return myFilter;
     }
