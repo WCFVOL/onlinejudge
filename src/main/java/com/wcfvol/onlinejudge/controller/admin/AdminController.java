@@ -10,11 +10,12 @@ import com.wcfvol.onlinejudge.po.TaskPojo;
 import com.wcfvol.onlinejudge.service.ProblemListService;
 import com.wcfvol.onlinejudge.service.ProblemService;
 import com.wcfvol.onlinejudge.service.SubmissionService;
+import com.wcfvol.onlinejudge.util.ReadFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.File;
+import java.io.*;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -74,7 +75,10 @@ public class AdminController {
         // TODO: 2018/7/2
         TaskPojo task = new TaskPojo();
         task.setTaskId(2);
-        // task.setData();
+        JSONObject json = new JSONObject();
+        json.put("input",ReadFile.read(input));
+        json.put("output",ReadFile.read(output));
+        task.setData(json.toJSONString());
         sendCode.send("text",task.toString());
         return RestResult.ok();
     }
