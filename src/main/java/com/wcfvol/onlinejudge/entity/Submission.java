@@ -13,7 +13,7 @@ import java.util.Date;
 public class Submission {
     private int id;
     private String code;
-    private int userId;
+    private String username;
     private Date date;
     private int problemId;
     private int result;
@@ -25,7 +25,7 @@ public class Submission {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("id",id);
         jsonObject.put("code",code);
-        jsonObject.put("userId",userId);
+        jsonObject.put("userId",username);
         jsonObject.put("date",date);
         jsonObject.put("problemId",problemId);
         jsonObject.put("language",language);

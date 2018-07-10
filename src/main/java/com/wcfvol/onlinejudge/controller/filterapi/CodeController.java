@@ -39,7 +39,7 @@ public class CodeController {
         submission.setCode(jsonBody.getString("code"));
         submission.setDate(jsonBody.getDate("date"));
         submission.setProblemId(jsonBody.getInteger("problem_id"));
-        submission.setUserId(jsonBody.getInteger("user_id"));
+        submission.setUsername(jsonBody.getString("username"));
         submission.setLanguage(jsonBody.getInteger("language"));
         submissionService.addSubmission(submission);
         TaskPojo task = new TaskPojo();
@@ -57,7 +57,7 @@ public class CodeController {
         String username = JwtUtil.getUsernameFromToken(token);
         User user = userService.getUser(username);
         Submission sub=submissionService.getCodeByid(id);
-        if (sub.getUserId() != user.getId()) {
+        if (sub.getUsername() != user.getUsername()) {
             return RestResult.fail(0,"没有权限!");
         }
         return RestResult.ok().setData(sub.getCode());
