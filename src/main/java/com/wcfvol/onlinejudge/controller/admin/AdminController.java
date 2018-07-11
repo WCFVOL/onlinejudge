@@ -73,14 +73,17 @@ public class AdminController {
     @RequestMapping(value = "/add_input",method = RequestMethod.POST)
     public RestResult addInput(@RequestParam("input")File input) throws ExecutionException, InterruptedException {
         // TODO: 2018/7/2
+        System.out.println(123);
         TaskPojo task = new TaskPojo();
         task.setTaskId(2);
         JSONObject json = new JSONObject();
         json.put("input",ReadFile.read(input));
+        System.out.println(ReadFile.read(input));
         task.setData(json.toJSONString());
         sendCode.send("text",task.toString());
         return RestResult.ok();
-    }    @RequestMapping(value = "/add_output",method = RequestMethod.POST)
+    }
+    @RequestMapping(value = "/add_output",method = RequestMethod.POST)
     public RestResult addOutput(@RequestParam("output")File output) throws ExecutionException, InterruptedException {
         // TODO: 2018/7/2
         TaskPojo task = new TaskPojo();

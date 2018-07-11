@@ -2,16 +2,22 @@ package com.wcfvol.onlinejudge.filter;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
-@Component
+
+import javax.servlet.Filter;
+@Configuration
 public class AdminFilterRegisterBean {
     @Bean
-    public FilterRegistrationBean adminFilter() {
-        FilterRegistrationBean myFilter = new FilterRegistrationBean();
+    public FilterRegistrationBean<Filter> adminFilter() {
+        FilterRegistrationBean<Filter> myFilter = new FilterRegistrationBean<>();
+        myFilter.setFilter(getFilter());
         myFilter.addUrlPatterns("/admin/*");
         myFilter.setOrder(1);
-        myFilter.setFilter(new AdminFilter());
         return myFilter;
+    }
+    @Bean
+    Filter getFilter() {
+        return new AdminFilter();
     }
 }
