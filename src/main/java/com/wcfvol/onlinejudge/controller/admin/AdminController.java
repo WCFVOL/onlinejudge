@@ -14,8 +14,10 @@ import com.wcfvol.onlinejudge.util.ReadFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -71,25 +73,27 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/add_input",method = RequestMethod.POST)
-    public RestResult addInput(@RequestParam("input")File input) throws ExecutionException, InterruptedException {
+    public RestResult addInput(@RequestParam("file")MultipartFile input) throws ExecutionException, InterruptedException, IOException {
         // TODO: 2018/7/2
         System.out.println(123);
         TaskPojo task = new TaskPojo();
         task.setTaskId(2);
         JSONObject json = new JSONObject();
-        json.put("input",ReadFile.read(input));
-        System.out.println(ReadFile.read(input));
+        json.put("input",new String(input.getBytes()));
+        System.out.println(new String(input.getBytes()));
         task.setData(json.toJSONString());
         sendCode.send("text",task.toString());
         return RestResult.ok();
     }
     @RequestMapping(value = "/add_output",method = RequestMethod.POST)
-    public RestResult addOutput(@RequestParam("output")File output) throws ExecutionException, InterruptedException {
+    public RestResult addOutput(@RequestParam("file")MultipartFile output) throws ExecutionException, InterruptedException, IOException {
         // TODO: 2018/7/2
+        System.out.println(123);
         TaskPojo task = new TaskPojo();
         task.setTaskId(2);
         JSONObject json = new JSONObject();
-        json.put("output",ReadFile.read(output));
+        json.put("output",new String(output.getBytes()));
+        System.out.println(new String(output.getBytes()));
         task.setData(json.toJSONString());
         sendCode.send("text",task.toString());
         return RestResult.ok();
