@@ -14,5 +14,9 @@ public class Problem {
     private String sampleInput;
     private String sampleOutput;
     private String hint;
-    // TODO: 2018/6/27 时间限制 内存限制  提交数 通过数
+    private int    timeLimit;
+    private int    memLimit;
+    private int    submitNum;
+    private int    acceptNum;
+    private int    testCase;
 }

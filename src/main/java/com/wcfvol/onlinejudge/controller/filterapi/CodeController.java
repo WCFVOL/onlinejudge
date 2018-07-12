@@ -5,6 +5,7 @@ import com.wcfvol.onlinejudge.entity.Submission;
 import com.wcfvol.onlinejudge.entity.User;
 import com.wcfvol.onlinejudge.kafka.SendCode;
 import com.wcfvol.onlinejudge.po.RestResult;
+import com.wcfvol.onlinejudge.po.SubmitPojo;
 import com.wcfvol.onlinejudge.po.TaskPojo;
 import com.wcfvol.onlinejudge.service.SubmissionService;
 import com.wcfvol.onlinejudge.service.UserService;
@@ -33,17 +34,12 @@ public class CodeController {
     @RequestMapping(value = "/submit", method = RequestMethod.POST)
     @ResponseBody
     public RestResult submitCode(@RequestBody String body) throws ExecutionException, InterruptedException {
-        JSONObject jsonBody = (JSONObject) JSONObject.parse(body);
         System.out.println(body);
-        Submission submission = new Submission();
-        submission.setCode(jsonBody.getString("code"));
-        submission.setDate(jsonBody.getDate("date"));
-        submission.setProblemId(jsonBody.getInteger("problem_id"));
-        submission.setUsername(jsonBody.getString("username"));
-        submission.setLanguage(jsonBody.getInteger("language"));
+        Submission submission = submissionService.getSubmissionByBody(body);
         submissionService.addSubmission(submission);
+        SubmitPojo submitPojo = submissionService.getSubmitPojoBysubmission(submission);
         TaskPojo task = new TaskPojo();
-        task.setData(submission.toSubmitString());
+        task.setData(submitPojo.toString());
         task.setTaskId(1);
         sendCode.send("test",task.toString());
         return RestResult.ok().setData(submission);

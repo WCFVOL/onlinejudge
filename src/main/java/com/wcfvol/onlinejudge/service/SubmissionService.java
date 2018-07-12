@@ -1,6 +1,7 @@
 package com.wcfvol.onlinejudge.service;
 
 import com.wcfvol.onlinejudge.entity.Submission;
+import com.wcfvol.onlinejudge.po.SubmitPojo;
 
 import java.util.List;
 
@@ -10,4 +11,6 @@ public interface SubmissionService {
     List<Submission> getAllSubmission();
     List<Submission> getSubmissionList(int start, int size);
     Submission getCodeByid(int id);
+    Submission getSubmissionByBody(String body);
+    SubmitPojo getSubmitPojoBysubmission(Submission submission);
 }
