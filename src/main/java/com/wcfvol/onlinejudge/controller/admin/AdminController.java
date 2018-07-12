@@ -73,26 +73,28 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/add_input",method = RequestMethod.POST)
-    public RestResult addInput(@RequestParam("file")MultipartFile input) throws ExecutionException, InterruptedException, IOException {
+    public RestResult addInput(@RequestParam("file")MultipartFile input, @RequestParam("id") int id) throws ExecutionException, InterruptedException, IOException {
         // TODO: 2018/7/2
         System.out.println(123);
         TaskPojo task = new TaskPojo();
         task.setTaskId(2);
         JSONObject json = new JSONObject();
         json.put("input",new String(input.getBytes()));
-        System.out.println(new String(input.getBytes()));
+        json.put("id",id);
+        System.out.println(json);
         task.setData(json.toJSONString());
         sendCode.send("text",task.toString());
         return RestResult.ok();
     }
     @RequestMapping(value = "/add_output",method = RequestMethod.POST)
-    public RestResult addOutput(@RequestParam("file")MultipartFile output) throws ExecutionException, InterruptedException, IOException {
+    public RestResult addOutput(@RequestParam("file")MultipartFile output, @RequestParam("id") int id) throws ExecutionException, InterruptedException, IOException {
         // TODO: 2018/7/2
         System.out.println(123);
         TaskPojo task = new TaskPojo();
         task.setTaskId(2);
         JSONObject json = new JSONObject();
         json.put("output",new String(output.getBytes()));
+        json.put("id",id);
         System.out.println(new String(output.getBytes()));
         task.setData(json.toJSONString());
         sendCode.send("text",task.toString());
