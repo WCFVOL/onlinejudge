@@ -1,6 +1,7 @@
 package com.wcfvol.onlinejudge.controller.admin;
 
 import com.alibaba.fastjson.JSONObject;
+import com.sun.xml.internal.bind.v2.TODO;
 import com.wcfvol.onlinejudge.entity.Problem;
 import com.wcfvol.onlinejudge.entity.ProblemList;
 import com.wcfvol.onlinejudge.entity.Submission;
@@ -76,13 +77,13 @@ public class AdminController {
 
     @RequestMapping(value = "/add_input",method = RequestMethod.POST)
     public RestResult addInput(@RequestParam("file")MultipartFile input, @RequestParam("id") int id) throws ExecutionException, InterruptedException, IOException {
-        // TODO: 2018/7/2
+        // TODO: 2018/7/12 CASE ID 
         System.out.println(123);
         TaskPojo task = new TaskPojo();
         task.setTaskId(2);
         JSONObject json = new JSONObject();
         json.put("input",new String(input.getBytes()));
-        json.put("id",id);
+        json.put("problemId",id);
         System.out.println(json);
         task.setData(json.toJSONString());
         sendCode.send("text",task.toString());
