@@ -77,16 +77,19 @@ public class AdminController {
 
     @RequestMapping(value = "/add_input",method = RequestMethod.POST)
     public RestResult addInput(@RequestParam("file")MultipartFile input, @RequestParam("id") int id) throws ExecutionException, InterruptedException, IOException {
-        // TODO: 2018/7/12 CASE ID 
+        // TODO: 2018/7/12 CASE ID
         System.out.println(123);
         TaskPojo task = new TaskPojo();
         task.setTaskId(2);
         JSONObject json = new JSONObject();
         json.put("input",new String(input.getBytes()));
         json.put("problemId",id);
-        System.out.println(json);
+        Problem problem = problemService.getProblemById(id);
+        json.put("caseId",problem.getTestCase());
+        problemService.updateCaseId(problem.getId());
         task.setData(json.toJSONString());
-        sendCode.send("text",task.toString());
+        System.out.println(task.toString());
+        sendCode.send("test",task.toString());
         return RestResult.ok();
     }
     @RequestMapping(value = "/add_output",method = RequestMethod.POST)
@@ -97,10 +100,13 @@ public class AdminController {
         task.setTaskId(2);
         JSONObject json = new JSONObject();
         json.put("output",new String(output.getBytes()));
-        json.put("id",id);
-        System.out.println(new String(output.getBytes()));
+        json.put("problemId",id);
+        Problem problem = problemService.getProblemById(id);
+        json.put("caseId",problem.getTestCase());
+        problemService.updateCaseId(problem.getId());
         task.setData(json.toJSONString());
-        sendCode.send("text",task.toString());
+        System.out.println(task.toString());
+        sendCode.send("test",task.toString());
         return RestResult.ok();
     }
 

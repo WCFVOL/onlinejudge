@@ -17,6 +17,6 @@ public class SendCodeTest {
 
     @Test
     public void send() throws ExecutionException, InterruptedException {
-        sendCode.send("test","888");
+        sendCode.send("test","{\"data\":\"{\\\"input\\\":\\\"11\\\\n\\\",\\\"caseId\\\":0,\\\"problemId\\\":1}\",\"taskId\":2}\n");
     }
 }

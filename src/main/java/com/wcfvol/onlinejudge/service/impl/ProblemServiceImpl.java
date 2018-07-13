@@ -21,4 +21,9 @@ public class ProblemServiceImpl implements ProblemService {
     public Problem getProblemById(int id) {
         return problemDAO.getProblemById(id);
     }
+
+    @Override
+    public void updateCaseId(int id) {
+        problemDAO.updateCaseId(id);
+    }
 }

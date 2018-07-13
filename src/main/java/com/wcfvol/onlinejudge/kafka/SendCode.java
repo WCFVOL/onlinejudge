@@ -10,7 +10,7 @@ import java.util.concurrent.ExecutionException;
 @Service
 public class SendCode {
     @Autowired
-    private KafkaTemplate template;
+    private KafkaTemplate<String, String> template;
 
     public void send(String topic, String data) throws ExecutionException, InterruptedException {
         template.send(new ProducerRecord<String,String>(topic,data)).get();
