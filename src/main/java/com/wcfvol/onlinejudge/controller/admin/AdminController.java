@@ -12,7 +12,10 @@ import com.wcfvol.onlinejudge.service.ProblemListService;
 import com.wcfvol.onlinejudge.service.ProblemService;
 import com.wcfvol.onlinejudge.service.SubmissionService;
 import com.wcfvol.onlinejudge.util.ReadFile;
+import lombok.Synchronized;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -76,6 +79,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/add_input",method = RequestMethod.POST)
+    @Transactional(isolation=Isolation.SERIALIZABLE)
     public RestResult addInput(@RequestParam("file")MultipartFile input, @RequestParam("id") int id) throws ExecutionException, InterruptedException, IOException {
         // TODO: 2018/7/12 CASE ID
         System.out.println(123);
@@ -84,9 +88,12 @@ public class AdminController {
         JSONObject json = new JSONObject();
         json.put("input",new String(input.getBytes()));
         json.put("problemId",id);
-        Problem problem = problemService.getProblemById(id);
-        json.put("caseId",problem.getTestCase());
-        problemService.updateCaseId(problem.getId());
+        synchronized(problemService) {
+            Problem problem = problemService.getProblemById(id);
+            problemService.updateCaseId(problem.getId());
+            json.put("caseId", problem.getTestCase());
+
+        }
         task.setData(json.toJSONString());
         System.out.println(task.toString());
         sendCode.send("test",task.toString());
