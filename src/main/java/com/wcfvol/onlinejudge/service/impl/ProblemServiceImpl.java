@@ -23,7 +23,7 @@ public class ProblemServiceImpl implements ProblemService {
     }
 
     @Override
-    public void updateCaseId(int id) {
-        problemDAO.updateCaseId(id);
+    public void updateCaseId(int id,int num) {
+        problemDAO.updateCaseId(id, num);
     }
 }

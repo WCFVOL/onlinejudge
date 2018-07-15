@@ -1,10 +1,7 @@
 package com.wcfvol.onlinejudge.dao;
 
 import com.wcfvol.onlinejudge.entity.Problem;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 /**
  * @author Wang Chunfei
@@ -25,6 +22,6 @@ public interface ProblemDAO {
             ",#{mem_limit} )"})
     void addProblem(Problem problem);
 
-    @Update({"UPDATE ",TABLE_NAME," SET test_case=test_case+1  WHERE id=#{id}"})
-    void updateCaseId(int id);
+    @Update({"UPDATE ",TABLE_NAME," SET test_case=test_case+#{num}  WHERE id=#{id}"})
+    void updateCaseId(@Param("id") int id,@Param("num") int num);
 }

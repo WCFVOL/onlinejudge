@@ -1,7 +1,6 @@
 package com.wcfvol.onlinejudge.controller.admin;
 
 import com.alibaba.fastjson.JSONObject;
-import com.sun.xml.internal.bind.v2.TODO;
 import com.wcfvol.onlinejudge.entity.Problem;
 import com.wcfvol.onlinejudge.entity.ProblemList;
 import com.wcfvol.onlinejudge.entity.Submission;
@@ -11,17 +10,13 @@ import com.wcfvol.onlinejudge.po.TaskPojo;
 import com.wcfvol.onlinejudge.service.ProblemListService;
 import com.wcfvol.onlinejudge.service.ProblemService;
 import com.wcfvol.onlinejudge.service.SubmissionService;
-import com.wcfvol.onlinejudge.util.ReadFile;
-import lombok.Synchronized;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -90,7 +85,7 @@ public class AdminController {
         json.put("problemId",id);
         synchronized(problemService) {
             Problem problem = problemService.getProblemById(id);
-            problemService.updateCaseId(problem.getId());
+            problemService.updateCaseId(problem.getId(),1);
             json.put("caseId", problem.getTestCase());
 
         }
@@ -108,9 +103,11 @@ public class AdminController {
         JSONObject json = new JSONObject();
         json.put("output",new String(output.getBytes()));
         json.put("problemId",id);
-        Problem problem = problemService.getProblemById(id);
-        json.put("caseId",problem.getTestCase());
-        problemService.updateCaseId(problem.getId());
+        synchronized(problemService) {
+            Problem problem = problemService.getProblemById(id);
+            problemService.updateCaseId(problem.getId(),10000);
+            json.put("caseId", problem.getTestCase()/10000);
+        }
         task.setData(json.toJSONString());
         System.out.println(task.toString());
         sendCode.send("test",task.toString());
