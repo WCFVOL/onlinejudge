@@ -63,6 +63,7 @@ public class AdminController {
         problem.setSampleOutput(jsonBody.getString("sampleOutput"));
         problem.setTimeLimit(jsonBody.getInteger("timeLimit"));
         problem.setMemLimit(jsonBody.getInteger("memLimit"));
+        System.out.println(problem);
         ProblemList problemList = new ProblemList();
         problemList.setAuthor(jsonBody.getString("author"));
         problemList.setSource(jsonBody.getString("source"));

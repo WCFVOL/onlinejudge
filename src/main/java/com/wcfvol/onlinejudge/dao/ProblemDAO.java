@@ -18,8 +18,8 @@ public interface ProblemDAO {
     Problem getProblemById(int id);
 
     @Insert({"INSERT INTO ",TABLE_NAME," ( ",INSET_FIELDS, " ) VALUES " +
-            "( #{title},#{description},#{input},#{output},#{sampleInput},#{sampleOutput},#{hint},#{time_limit}" +
-            ",#{mem_limit} )"})
+            "( #{title},#{description},#{input},#{output},#{sampleInput},#{sampleOutput},#{hint},#{timeLimit}" +
+            ",#{memLimit} )"})
     void addProblem(Problem problem);
 
     @Update({"UPDATE ",TABLE_NAME," SET test_case=test_case+#{num}  WHERE id=#{id}"})
