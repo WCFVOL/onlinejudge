@@ -1,5 +1,6 @@
 package com.wcfvol.onlinejudge.kafka;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Ignore
 public class SendCodeTest {
     @Autowired
     SendCode sendCode;

@@ -2,6 +2,7 @@ package com.wcfvol.onlinejudge.service.impl;
 
 import com.wcfvol.onlinejudge.entity.ProblemList;
 import com.wcfvol.onlinejudge.service.ProblemListService;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
+@Ignore
 public class ProblemListServiceImplTest {
     @Autowired
     ProblemListService problemListService;
