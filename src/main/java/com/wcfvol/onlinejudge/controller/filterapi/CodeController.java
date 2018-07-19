@@ -41,6 +41,7 @@ public class CodeController {
         TaskPojo task = new TaskPojo();
         task.setData(submitPojo.toString());
         task.setTaskId(1);
+        System.out.println(task.toString());
         sendCode.send("test",task.toString());
         return RestResult.ok().setData(submission);
     }

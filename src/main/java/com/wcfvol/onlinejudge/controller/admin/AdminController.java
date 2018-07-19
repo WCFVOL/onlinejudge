@@ -87,8 +87,7 @@ public class AdminController {
         synchronized(problemService) {
             Problem problem = problemService.getProblemById(id);
             problemService.updateCaseId(problem.getId(),1);
-            json.put("caseId", problem.getTestCase());
-
+            json.put("caseId", problem.getTestCase()%10000);
         }
         task.setData(json.toJSONString());
         System.out.println(task.toString());

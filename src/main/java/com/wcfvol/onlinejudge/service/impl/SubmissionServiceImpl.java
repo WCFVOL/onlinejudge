@@ -67,6 +67,7 @@ public class SubmissionServiceImpl implements SubmissionService {
         submitPojo.setTimeLimit(problem.getTimeLimit());
         submitPojo.setMemLimit(problem.getMemLimit());
         submitPojo.setTestCase(problem.getTestCase());
+        submitPojo.setId(submission.getId());
         return submitPojo;
     }
 }
