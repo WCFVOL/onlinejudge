@@ -25,4 +25,9 @@ public class UserServiceImpl implements UserService {
         userDAO.addUser(user);
     }
 
+    @Override
+    public void addAttempt(String username) {
+        userDAO.updateAttempt(username);
+    }
+
 }

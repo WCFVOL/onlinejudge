@@ -33,8 +33,12 @@ public class CodeController {
 
     @RequestMapping(value = "/submit", method = RequestMethod.POST)
     @ResponseBody
-    public RestResult submitCode(@RequestBody String body) throws ExecutionException, InterruptedException {
+    public RestResult submitCode(HttpServletRequest request, @RequestBody String body) throws ExecutionException, InterruptedException {
         System.out.println(body);
+        Cookie[] cookies = request.getCookies();
+        String token = cookies[cookies.length-1].getValue();
+        String username = JwtUtil.getUsernameFromToken(token);
+        userService.addAttempt(username);
         Submission submission = submissionService.getSubmissionByBody(body);
         submissionService.addSubmission(submission);
         SubmitPojo submitPojo = submissionService.getSubmitPojoBysubmission(submission);

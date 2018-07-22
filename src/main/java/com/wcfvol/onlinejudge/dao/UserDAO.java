@@ -15,4 +15,7 @@ public interface UserDAO {
 
     @Insert({"INSERT INTO ",TABLE_NAME," ( ",INSET_FIELDS," ) VALUE ( #{username}, #{email}, #{solved}, #{attempt}, #{isAdmin} ) "})
     void addUser(User user);
+
+    @Update({"UPDATE ",TABLE_NAME," SET attempt = attempt + 1 WHERE username = #{username}"})
+    void updateAttempt(String username);
 }
