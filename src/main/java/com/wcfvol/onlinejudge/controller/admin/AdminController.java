@@ -1,6 +1,7 @@
 package com.wcfvol.onlinejudge.controller.admin;
 
 import com.alibaba.fastjson.JSONObject;
+import com.wcfvol.onlinejudge.dao.UserDAO;
 import com.wcfvol.onlinejudge.entity.Problem;
 import com.wcfvol.onlinejudge.entity.ProblemList;
 import com.wcfvol.onlinejudge.entity.Submission;
@@ -18,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @ClassName ResultController
@@ -35,6 +37,7 @@ public class AdminController {
     ProblemListService problemListService;
     @Autowired
     SendCode sendCode;
+
 
     @RequestMapping(value = "/set_result",method = RequestMethod.POST)
     public RestResult setResult(@RequestBody String body) {
