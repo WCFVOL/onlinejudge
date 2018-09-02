@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.net.URISyntaxException;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -33,7 +34,7 @@ public class CodeController {
 
     @RequestMapping(value = "/submit", method = RequestMethod.POST)
     @ResponseBody
-    public RestResult submitCode(HttpServletRequest request, @RequestBody String body) throws ExecutionException, InterruptedException {
+    public RestResult submitCode(HttpServletRequest request, @RequestBody String body) throws ExecutionException, InterruptedException, URISyntaxException {
         System.out.println(body);
         Cookie[] cookies = request.getCookies();
         String token = cookies[cookies.length-1].getValue();
@@ -46,7 +47,7 @@ public class CodeController {
         task.setData(submitPojo.toString());
         task.setTaskId(1);
         System.out.println(task.toString());
-        sendCode.send("test",task.toString());
+        sendCode.send(task.toString());
         return RestResult.ok().setData(submission);
     }
 

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
+import java.net.URISyntaxException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -79,7 +80,7 @@ public class AdminController {
 
     @RequestMapping(value = "/add_input",method = RequestMethod.POST)
     @Transactional(isolation=Isolation.SERIALIZABLE)
-    public RestResult addInput(@RequestParam("file")MultipartFile input, @RequestParam("id") int id) throws ExecutionException, InterruptedException, IOException {
+    public RestResult addInput(@RequestParam("file")MultipartFile input, @RequestParam("id") int id) throws ExecutionException, InterruptedException, IOException, URISyntaxException {
         // TODO: 2018/7/12 CASE ID
         System.out.println(123);
         TaskPojo task = new TaskPojo();
@@ -94,11 +95,11 @@ public class AdminController {
         }
         task.setData(json.toJSONString());
         System.out.println(task.toString());
-        sendCode.send("test",task.toString());
+        sendCode.send(task.toString());
         return RestResult.ok();
     }
     @RequestMapping(value = "/add_output",method = RequestMethod.POST)
-    public RestResult addOutput(@RequestParam("file")MultipartFile output, @RequestParam("id") int id) throws ExecutionException, InterruptedException, IOException {
+    public RestResult addOutput(@RequestParam("file")MultipartFile output, @RequestParam("id") int id) throws ExecutionException, InterruptedException, IOException, URISyntaxException {
         // TODO: 2018/7/2
         System.out.println(123);
         TaskPojo task = new TaskPojo();
@@ -113,7 +114,7 @@ public class AdminController {
         }
         task.setData(json.toJSONString());
         System.out.println(task.toString());
-        sendCode.send("test",task.toString());
+        sendCode.send(task.toString());
         return RestResult.ok();
     }
 
