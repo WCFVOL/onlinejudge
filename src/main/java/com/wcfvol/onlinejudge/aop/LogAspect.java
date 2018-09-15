@@ -24,9 +24,9 @@ import java.util.Enumeration;
 public class LogAspect {
     private Logger logger =  LoggerFactory.getLogger(getClass());
     @Pointcut("execution(public * com.wcfvol.onlinejudge.controller..*.*(..))")
-    public void WebLog() {
+    public void webLog() {
     }
-    @Before("WebLog()")
+    @Before("webLog()")
     public void logBefore(JoinPoint joinPoint) {
         ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest httpServletRequest = servletRequestAttributes.getRequest();
@@ -40,7 +40,7 @@ public class LogAspect {
         }
         logger.info(log.toString());
     }
-    @AfterReturning(returning = "ret", pointcut = "WebLog()")
+    @AfterReturning(returning = "ret", pointcut = "webLog()")
     public void doAfterReturning(Object ret) {
         logger.info("RESPONSE : " + ret);
     }
