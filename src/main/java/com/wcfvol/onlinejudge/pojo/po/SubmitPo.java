@@ -1,11 +1,10 @@
-package com.wcfvol.onlinejudge.po;
+package com.wcfvol.onlinejudge.pojo.po;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 
-import java.util.Date;
 @Data
-public class SubmitPojo {
+public class SubmitPo {
     private String code;
     private String username;
     private int problemId;

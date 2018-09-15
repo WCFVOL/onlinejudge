@@ -1,13 +1,11 @@
 package com.wcfvol.onlinejudge.controller.api;
 
 import com.wcfvol.onlinejudge.entity.Announcements;
-import com.wcfvol.onlinejudge.po.RestResult;
+import com.wcfvol.onlinejudge.pojo.RestResult;
 import com.wcfvol.onlinejudge.service.AnnouncementsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * @author Wang Chunfei

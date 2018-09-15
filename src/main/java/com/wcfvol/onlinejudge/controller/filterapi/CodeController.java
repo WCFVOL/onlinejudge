@@ -1,12 +1,11 @@
 package com.wcfvol.onlinejudge.controller.filterapi;
 
-import com.alibaba.fastjson.JSONObject;
 import com.wcfvol.onlinejudge.entity.Submission;
 import com.wcfvol.onlinejudge.entity.User;
-import com.wcfvol.onlinejudge.kafka.SendCode;
-import com.wcfvol.onlinejudge.po.RestResult;
-import com.wcfvol.onlinejudge.po.SubmitPojo;
-import com.wcfvol.onlinejudge.po.TaskPojo;
+import com.wcfvol.onlinejudge.client.SendCode;
+import com.wcfvol.onlinejudge.pojo.RestResult;
+import com.wcfvol.onlinejudge.pojo.po.SubmitPo;
+import com.wcfvol.onlinejudge.pojo.po.TaskPo;
 import com.wcfvol.onlinejudge.service.SubmissionService;
 import com.wcfvol.onlinejudge.service.UserService;
 import com.wcfvol.onlinejudge.util.JwtUtil;
@@ -42,9 +41,9 @@ public class CodeController {
         userService.addAttempt(username);
         Submission submission = submissionService.getSubmissionByBody(body);
         submissionService.addSubmission(submission);
-        SubmitPojo submitPojo = submissionService.getSubmitPojoBysubmission(submission);
-        TaskPojo task = new TaskPojo();
-        task.setData(submitPojo.toString());
+        SubmitPo submitPo = submissionService.getSubmitPojoBysubmission(submission);
+        TaskPo task = new TaskPo();
+        task.setData(submitPo.toString());
         task.setTaskId(1);
         System.out.println(task.toString());
         sendCode.send(task.toString());

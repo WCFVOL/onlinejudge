@@ -2,7 +2,7 @@ package com.wcfvol.onlinejudge.controller.filterapi;
 
 import com.alibaba.fastjson.JSONObject;
 import com.wcfvol.onlinejudge.entity.User;
-import com.wcfvol.onlinejudge.po.RestResult;
+import com.wcfvol.onlinejudge.pojo.RestResult;
 import com.wcfvol.onlinejudge.service.UserService;
 import com.wcfvol.onlinejudge.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;

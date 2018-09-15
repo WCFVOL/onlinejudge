@@ -1,13 +1,12 @@
 package com.wcfvol.onlinejudge.controller.admin;
 
 import com.alibaba.fastjson.JSONObject;
-import com.wcfvol.onlinejudge.dao.UserDAO;
 import com.wcfvol.onlinejudge.entity.Problem;
 import com.wcfvol.onlinejudge.entity.ProblemList;
 import com.wcfvol.onlinejudge.entity.Submission;
-import com.wcfvol.onlinejudge.kafka.SendCode;
-import com.wcfvol.onlinejudge.po.RestResult;
-import com.wcfvol.onlinejudge.po.TaskPojo;
+import com.wcfvol.onlinejudge.client.SendCode;
+import com.wcfvol.onlinejudge.pojo.RestResult;
+import com.wcfvol.onlinejudge.pojo.po.TaskPo;
 import com.wcfvol.onlinejudge.service.ProblemListService;
 import com.wcfvol.onlinejudge.service.ProblemService;
 import com.wcfvol.onlinejudge.service.SubmissionService;
@@ -20,7 +19,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @ClassName ResultController
@@ -83,7 +81,7 @@ public class AdminController {
     public RestResult addInput(@RequestParam("file")MultipartFile input, @RequestParam("id") int id) throws ExecutionException, InterruptedException, IOException, URISyntaxException {
         // TODO: 2018/7/12 CASE ID
         System.out.println(123);
-        TaskPojo task = new TaskPojo();
+        TaskPo task = new TaskPo();
         task.setTaskId(2);
         JSONObject json = new JSONObject();
         json.put("input",new String(input.getBytes()));
@@ -102,7 +100,7 @@ public class AdminController {
     public RestResult addOutput(@RequestParam("file")MultipartFile output, @RequestParam("id") int id) throws ExecutionException, InterruptedException, IOException, URISyntaxException {
         // TODO: 2018/7/2
         System.out.println(123);
-        TaskPojo task = new TaskPojo();
+        TaskPo task = new TaskPo();
         task.setTaskId(2);
         JSONObject json = new JSONObject();
         json.put("output",new String(output.getBytes()));

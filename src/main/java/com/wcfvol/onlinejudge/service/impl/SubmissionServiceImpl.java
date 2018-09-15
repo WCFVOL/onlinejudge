@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.wcfvol.onlinejudge.dao.SubmissionDAO;
 import com.wcfvol.onlinejudge.entity.Problem;
 import com.wcfvol.onlinejudge.entity.Submission;
-import com.wcfvol.onlinejudge.po.SubmitPojo;
+import com.wcfvol.onlinejudge.pojo.po.SubmitPo;
 import com.wcfvol.onlinejudge.service.ProblemService;
 import com.wcfvol.onlinejudge.service.SubmissionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,18 +56,18 @@ public class SubmissionServiceImpl implements SubmissionService {
     }
 
     @Override
-    public SubmitPojo getSubmitPojoBysubmission(Submission submission) {
-        SubmitPojo submitPojo = new SubmitPojo();
-        submitPojo.setLanguage(submission.getLanguage());
-        submitPojo.setUsername(submission.getUsername());
-        submitPojo.setProblemId(submission.getProblemId());
-        submitPojo.setCode(submission.getCode());
-        submitPojo.setMemLimit(submission.getMemory());
+    public SubmitPo getSubmitPojoBysubmission(Submission submission) {
+        SubmitPo submitPo = new SubmitPo();
+        submitPo.setLanguage(submission.getLanguage());
+        submitPo.setUsername(submission.getUsername());
+        submitPo.setProblemId(submission.getProblemId());
+        submitPo.setCode(submission.getCode());
+        submitPo.setMemLimit(submission.getMemory());
         Problem problem =  problemService.getProblemById(submission.getProblemId());
-        submitPojo.setTimeLimit(problem.getTimeLimit());
-        submitPojo.setMemLimit(problem.getMemLimit());
-        submitPojo.setTestCase(problem.getTestCase());
-        submitPojo.setId(submission.getId());
-        return submitPojo;
+        submitPo.setTimeLimit(problem.getTimeLimit());
+        submitPo.setMemLimit(problem.getMemLimit());
+        submitPo.setTestCase(problem.getTestCase());
+        submitPo.setId(submission.getId());
+        return submitPo;
     }
 }

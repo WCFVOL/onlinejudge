@@ -1,15 +1,15 @@
-package com.wcfvol.onlinejudge.po;
+package com.wcfvol.onlinejudge.pojo.po;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 
 /**
- * @ClassName TaskPojo
+ * @ClassName TaskPo
  * @Author Wang Chunfei
  * @Date 2018/7/6 下午4:03
  **/
 @Data
-public class TaskPojo {
+public class TaskPo {
     int taskId;
     String data;
     @Override

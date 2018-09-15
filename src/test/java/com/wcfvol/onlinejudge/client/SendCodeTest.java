@@ -1,4 +1,4 @@
-package com.wcfvol.onlinejudge.kafka;
+package com.wcfvol.onlinejudge.client;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -8,7 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.net.URISyntaxException;
-import java.util.concurrent.ExecutionException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
