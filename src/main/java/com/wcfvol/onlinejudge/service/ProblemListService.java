@@ -1,6 +1,6 @@
 package com.wcfvol.onlinejudge.service;
 
-import com.wcfvol.onlinejudge.entity.ProblemList;
+import com.wcfvol.onlinejudge.pojo.po.gen.ProblemList;
 
 import java.util.List;
 

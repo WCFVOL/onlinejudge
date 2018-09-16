@@ -1,6 +1,6 @@
 package com.wcfvol.onlinejudge.service;
 
-import com.wcfvol.onlinejudge.entity.Submission;
+import com.wcfvol.onlinejudge.pojo.po.gen.Submission;
 import com.wcfvol.onlinejudge.pojo.po.SubmitPo;
 
 import java.util.List;

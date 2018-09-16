@@ -1,7 +1,7 @@
 package com.wcfvol.onlinejudge.service.impl;
 
 import com.wcfvol.onlinejudge.dao.ProblemDAO;
-import com.wcfvol.onlinejudge.entity.Problem;
+import com.wcfvol.onlinejudge.pojo.po.gen.Problem;
 import com.wcfvol.onlinejudge.service.ProblemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

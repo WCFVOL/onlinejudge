@@ -1,4 +1,4 @@
-package com.wcfvol.onlinejudge.entity;
+package com.wcfvol.onlinejudge.pojo.po.gen;
 
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;

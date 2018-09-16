@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.wcfvol.onlinejudge.dao.AnnouncementsDAO">
+    <select id = "queryAll" resultType = "com.wcfvol.onlinejudge.pojo.po.gen.Announcements">
+        select * from announcements;
+    </select>
+    <insert id="addAnnouncement" parameterType="com.wcfvol.onlinejudge.pojo.po.gen.Announcements">
+        insert into announcements(
+        title, date, author, author_id, content
+        )
+        values (
+        #{title},#{date},#{author},#{authorId},#{content}
+        )
+    </insert>
+</mapper>

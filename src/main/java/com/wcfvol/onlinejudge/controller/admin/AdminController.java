@@ -1,9 +1,9 @@
 package com.wcfvol.onlinejudge.controller.admin;
 
 import com.alibaba.fastjson.JSONObject;
-import com.wcfvol.onlinejudge.entity.Problem;
-import com.wcfvol.onlinejudge.entity.ProblemList;
-import com.wcfvol.onlinejudge.entity.Submission;
+import com.wcfvol.onlinejudge.pojo.po.gen.Problem;
+import com.wcfvol.onlinejudge.pojo.po.gen.ProblemList;
+import com.wcfvol.onlinejudge.pojo.po.gen.Submission;
 import com.wcfvol.onlinejudge.client.SendCode;
 import com.wcfvol.onlinejudge.pojo.RestResult;
 import com.wcfvol.onlinejudge.pojo.po.TaskPo;

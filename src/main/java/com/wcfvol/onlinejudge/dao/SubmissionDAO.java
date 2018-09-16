@@ -1,9 +1,8 @@
 package com.wcfvol.onlinejudge.dao;
 
-import com.wcfvol.onlinejudge.entity.Submission;
+import com.wcfvol.onlinejudge.pojo.po.gen.Submission;
 import org.apache.ibatis.annotations.*;
 
-import java.util.Date;
 import java.util.List;
 
 @Mapper

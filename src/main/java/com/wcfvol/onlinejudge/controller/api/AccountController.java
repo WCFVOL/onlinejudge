@@ -1,8 +1,7 @@
 package com.wcfvol.onlinejudge.controller.api;
 
-import com.alibaba.fastjson.JSONObject;
-import com.wcfvol.onlinejudge.entity.Authenticate;
-import com.wcfvol.onlinejudge.entity.User;
+import com.wcfvol.onlinejudge.pojo.po.gen.Authenticate;
+import com.wcfvol.onlinejudge.pojo.po.gen.User;
 import com.wcfvol.onlinejudge.pojo.RestResult;
 import com.wcfvol.onlinejudge.pojo.params.LoginParam;
 import com.wcfvol.onlinejudge.pojo.params.RegisterParam;

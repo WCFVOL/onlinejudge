@@ -1,6 +1,6 @@
 package com.wcfvol.onlinejudge.dao;
 
-import com.wcfvol.onlinejudge.entity.Problem;
+import com.wcfvol.onlinejudge.pojo.po.gen.Problem;
 import org.apache.ibatis.annotations.*;
 
 /**
