@@ -1,7 +1,7 @@
 package com.wcfvol.onlinejudge.controller.api;
 
-import com.wcfvol.onlinejudge.pojo.po.gen.Authenticate;
-import com.wcfvol.onlinejudge.pojo.po.gen.User;
+import com.wcfvol.onlinejudge.pojo.data.Authenticate;
+import com.wcfvol.onlinejudge.pojo.data.User;
 import com.wcfvol.onlinejudge.pojo.RestResult;
 import com.wcfvol.onlinejudge.pojo.params.LoginParam;
 import com.wcfvol.onlinejudge.pojo.params.RegisterParam;

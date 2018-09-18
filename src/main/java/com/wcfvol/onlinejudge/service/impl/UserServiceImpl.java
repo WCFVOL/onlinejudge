@@ -1,7 +1,7 @@
 package com.wcfvol.onlinejudge.service.impl;
 
 import com.wcfvol.onlinejudge.dao.UserDAO;
-import com.wcfvol.onlinejudge.pojo.po.gen.User;
+import com.wcfvol.onlinejudge.pojo.data.User;
 import com.wcfvol.onlinejudge.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

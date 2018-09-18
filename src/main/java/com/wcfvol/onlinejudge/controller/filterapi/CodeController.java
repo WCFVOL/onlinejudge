@@ -1,7 +1,7 @@
 package com.wcfvol.onlinejudge.controller.filterapi;
 
-import com.wcfvol.onlinejudge.pojo.po.gen.Submission;
-import com.wcfvol.onlinejudge.pojo.po.gen.User;
+import com.wcfvol.onlinejudge.pojo.data.Submission;
+import com.wcfvol.onlinejudge.pojo.data.User;
 import com.wcfvol.onlinejudge.client.SendCode;
 import com.wcfvol.onlinejudge.pojo.RestResult;
 import com.wcfvol.onlinejudge.pojo.po.SubmitPo;

@@ -1,6 +1,6 @@
 package com.wcfvol.onlinejudge.service;
 
-import com.wcfvol.onlinejudge.pojo.po.gen.Announcements;
+import com.wcfvol.onlinejudge.pojo.data.Announcements;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.wcfvol.onlinejudge.controller.filterapi;
 
 import com.alibaba.fastjson.JSONObject;
-import com.wcfvol.onlinejudge.pojo.po.gen.User;
+import com.wcfvol.onlinejudge.pojo.data.User;
 import com.wcfvol.onlinejudge.pojo.RestResult;
 import com.wcfvol.onlinejudge.service.UserService;
 import com.wcfvol.onlinejudge.util.JwtUtil;

@@ -1,6 +1,6 @@
 package com.wcfvol.onlinejudge.filter;
 
-import com.wcfvol.onlinejudge.pojo.po.gen.User;
+import com.wcfvol.onlinejudge.pojo.data.User;
 import com.wcfvol.onlinejudge.service.UserService;
 import com.wcfvol.onlinejudge.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;

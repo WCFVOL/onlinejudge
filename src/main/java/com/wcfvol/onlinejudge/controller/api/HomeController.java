@@ -1,6 +1,6 @@
 package com.wcfvol.onlinejudge.controller.api;
 
-import com.wcfvol.onlinejudge.pojo.po.gen.Announcements;
+import com.wcfvol.onlinejudge.pojo.data.Announcements;
 import com.wcfvol.onlinejudge.pojo.RestResult;
 import com.wcfvol.onlinejudge.service.AnnouncementsService;
 import org.springframework.beans.factory.annotation.Autowired;

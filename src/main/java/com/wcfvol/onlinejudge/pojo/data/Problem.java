@@ -1,4 +1,4 @@
-package com.wcfvol.onlinejudge.pojo.po.gen;
+package com.wcfvol.onlinejudge.pojo.data;
 import lombok.Data;
 
 /**
@@ -6,7 +6,7 @@ import lombok.Data;
  */
 @Data
 public class Problem {
-    private int id;
+    private Integer id;
     private String title;
     private String description;
     private String input;
@@ -14,9 +14,9 @@ public class Problem {
     private String sampleInput;
     private String sampleOutput;
     private String hint;
-    private int    timeLimit;
-    private int    memLimit;
-    private int    submitNum;
-    private int    acceptNum;
-    private int    testCase;
+    private Integer    timeLimit;
+    private Integer    memLimit;
+    private Integer    submitNum;
+    private Integer    acceptNum;
+    private Integer    testCase;
 }

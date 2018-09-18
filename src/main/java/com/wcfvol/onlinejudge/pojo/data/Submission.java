@@ -1,4 +1,4 @@
-package com.wcfvol.onlinejudge.pojo.po.gen;
+package com.wcfvol.onlinejudge.pojo.data;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;

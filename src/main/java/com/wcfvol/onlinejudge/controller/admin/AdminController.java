@@ -1,15 +1,17 @@
 package com.wcfvol.onlinejudge.controller.admin;
 
 import com.alibaba.fastjson.JSONObject;
-import com.wcfvol.onlinejudge.pojo.po.gen.Problem;
-import com.wcfvol.onlinejudge.pojo.po.gen.ProblemList;
-import com.wcfvol.onlinejudge.pojo.po.gen.Submission;
+import com.wcfvol.onlinejudge.pojo.data.Problem;
+import com.wcfvol.onlinejudge.pojo.data.ProblemList;
+import com.wcfvol.onlinejudge.pojo.data.Submission;
 import com.wcfvol.onlinejudge.client.SendCode;
 import com.wcfvol.onlinejudge.pojo.RestResult;
+import com.wcfvol.onlinejudge.pojo.params.AddProblemParam;
 import com.wcfvol.onlinejudge.pojo.po.TaskPo;
 import com.wcfvol.onlinejudge.service.ProblemListService;
 import com.wcfvol.onlinejudge.service.ProblemService;
 import com.wcfvol.onlinejudge.service.SubmissionService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -53,24 +55,22 @@ public class AdminController {
 
     @RequestMapping(value = "/add_problem",method = RequestMethod.POST)
     @Transactional(rollbackFor = Exception.class)
-    public RestResult addProblem(@RequestBody String body) {
-        JSONObject jsonBody = (JSONObject) JSONObject.parse(body);
+    public RestResult addProblem(@RequestBody AddProblemParam param) {
         Problem problem = new Problem();
-        problem.setDescription(jsonBody.getString("description"));
-        problem.setInput(jsonBody.getString("input"));
-        problem.setOutput(jsonBody.getString("output"));
-        problem.setTitle(jsonBody.getString("title"));
-        problem.setHint(jsonBody.getString("hint"));
-        problem.setSampleInput(jsonBody.getString("sampleInput"));
-        problem.setSampleOutput(jsonBody.getString("sampleOutput"));
-        problem.setTimeLimit(jsonBody.getInteger("timeLimit"));
-        problem.setMemLimit(jsonBody.getInteger("memLimit"));
-        System.out.println(problem);
-        ProblemList problemList = new ProblemList();
-        problemList.setAuthor(jsonBody.getString("author"));
-        problemList.setSource(jsonBody.getString("source"));
-        problemList.setTitle(jsonBody.getString("title"));
+        problem.setDescription(param.getDescription());
+        problem.setInput(param.getInput());
+        problem.setOutput(param.getOutput());
+        problem.setTitle(param.getTitle());
+        problem.setHint(param.getHint());
+        problem.setSampleInput(param.getSampleInput());
+        problem.setSampleOutput(param.getSampleOutput());
+        problem.setTimeLimit(param.getTimeLimit());
+        problem.setMemLimit(param.getMemLimit());
         problemService.addProblem(problem);
+        ProblemList problemList = new ProblemList();
+        problemList.setAuthor(param.getAuthor());
+        problemList.setSource(param.getSource());
+        problemList.setTitle(param.getTitle());
         problemList.setProblemId(problem.getId());
         problemListService.addProblemList(problemList);
         return RestResult.ok();

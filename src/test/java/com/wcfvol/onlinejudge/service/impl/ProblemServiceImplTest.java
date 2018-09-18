@@ -1,6 +1,6 @@
 package com.wcfvol.onlinejudge.service.impl;
 
-import com.wcfvol.onlinejudge.pojo.po.gen.Problem;
+import com.wcfvol.onlinejudge.pojo.data.Problem;
 import com.wcfvol.onlinejudge.service.ProblemService;
 import org.junit.Ignore;
 import org.junit.Test;
