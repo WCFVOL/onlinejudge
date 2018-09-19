@@ -17,7 +17,7 @@ public class AnnouncementsDAOTest {
 
     @Test
     public void queryAll() {
-        System.out.println(announcementsDAO.queryAll());
+
     }
 
     @Test

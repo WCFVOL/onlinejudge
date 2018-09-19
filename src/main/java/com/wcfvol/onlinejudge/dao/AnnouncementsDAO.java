@@ -1,6 +1,7 @@
 package com.wcfvol.onlinejudge.dao;
 
 import com.wcfvol.onlinejudge.pojo.data.Announcements;
+import com.wcfvol.onlinejudge.pojo.params.AnnouncementsQueryParam;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -10,6 +11,6 @@ import java.util.List;
  */
 @Mapper
 public interface AnnouncementsDAO {
-    List<Announcements> queryAll();
+    List<Announcements> queryAll(AnnouncementsQueryParam param);
     void addAnnouncement(Announcements announcements);
 }

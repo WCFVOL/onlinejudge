@@ -1,9 +1,9 @@
-package com.wcfvol.onlinejudge.pojo.po;
+package com.wcfvol.onlinejudge.pojo.vo;
 
 import lombok.Data;
 
 @Data
-public class ResultPo {
+public class ResultVo {
     private int id;
     private int result;
     private double time;
