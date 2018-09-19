@@ -37,10 +37,7 @@ public class ProblemController {
     }
 
     @RequestMapping(value = "/problem",method = RequestMethod.POST)
-    public RestResult getProblem(@RequestBody String body) {
-        JSONObject jsonBody = (JSONObject) JSONObject.parse(body);
-        String sId = jsonBody.getString("id");
-        int id = Integer.parseInt(sId);
+    public RestResult getProblem(@RequestBody Integer id) {
         return RestResult.ok().setData(problemService.getProblemById(id));
     }
 }
