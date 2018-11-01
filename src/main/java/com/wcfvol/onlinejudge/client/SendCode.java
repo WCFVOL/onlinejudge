@@ -20,10 +20,11 @@ import java.net.URISyntaxException;
 public class SendCode {
 
     @Value("${judger.path}")
-    private static String JUDGER_PATH;
+    private String JUDGER_PATH;
 
     public void send(String data) throws URISyntaxException {
         URI uri = new URI(JUDGER_PATH+"/task");
+        System.out.println(JUDGER_PATH);
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);

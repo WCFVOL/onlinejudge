@@ -36,8 +36,8 @@ public class ProblemController {
         }
     }
 
-    @RequestMapping(value = "/problem",method = RequestMethod.POST)
-    public RestResult getProblem(@RequestBody Integer id) {
+    @RequestMapping(value = "/problem",method = RequestMethod.GET)
+    public RestResult getProblem(@RequestParam Integer id) {
         return RestResult.ok().setData(problemService.getProblemById(id));
     }
 }
