@@ -58,7 +58,7 @@ public class CodeController {
         String username = JwtUtil.getUsernameFromToken(token);
         User user = userService.getUser(username);
         Submission sub=submissionService.getCodeByid(id);
-        if (sub.getUsername() != user.getUsername()) {
+        if (!sub.getUsername().equals(user.getUsername())) {
             return RestResult.fail(0,"没有权限!");
         }
         return RestResult.ok().setData(sub.getCode());
