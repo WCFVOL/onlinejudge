@@ -55,7 +55,6 @@ public class CodeController {
         submission.setResult(5);
         submissionService.updateResult(submission);
         return RestResult.fail(0, "提交评测失败");
-
     }
 
     @RequestMapping(value = "/code/{id}", method = RequestMethod.GET)
