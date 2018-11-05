@@ -10,7 +10,7 @@ public interface SubmissionService {
     void updateResult(Submission submission);
     List<Submission> getAllSubmission();
     List<Submission> getSubmissionList(int start, int size);
-    Submission getCodeByid(int id);
+    Submission getCodeById(int id);
     Submission getSubmissionByBody(String body);
-    SubmitPo getSubmitPojoBysubmission(Submission submission);
+    SubmitPo getSubmitPojoBySubmission(Submission submission);
 }

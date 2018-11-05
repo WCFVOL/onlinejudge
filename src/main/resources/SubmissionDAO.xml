@@ -1,0 +1,22 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<!DOCTYPE mapper-->
+        <!--PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"-->
+        <!--"http://mybatis.org/dtd/mybatis-3-mapper.dtd">-->
+<!--<mapper namespace = "com.wcfvol.onlinejudge.dao.SubmissionDAO">-->
+    <!--<insert id="addSubmission" parameterType="com.wcfvol.onlinejudge.pojo.data.Submission">-->
+        <!--insert into submissions(-->
+         <!--code, username, date, problem_id ,language-->
+        <!--)-->
+        <!--values (-->
+        <!--#{code},#{username},#{date},#{problemId},#{language}-->
+        <!--)-->
+    <!--</insert>-->
+    <!--&lt;!&ndash;<select id="getAuthByUsername" parameterType="java.lang.String"&ndash;&gt;-->
+            <!--&lt;!&ndash;resultType="com.wcfvol.onlinejudge.pojo.data.Authenticate">&ndash;&gt;-->
+        <!--&lt;!&ndash;select username, salt, password from auth where username = #{username}&ndash;&gt;-->
+    <!--&lt;!&ndash;</select>&ndash;&gt;-->
+    <!--&lt;!&ndash;<select id="getSaltByUsername" parameterType="java.lang.String"&ndash;&gt;-->
+            <!--&lt;!&ndash;resultType="java.lang.String">&ndash;&gt;-->
+        <!--&lt;!&ndash;SELECT salt FROM auth WHERE username = #{username}&ndash;&gt;-->
+    <!--&lt;!&ndash;</select>&ndash;&gt;-->
+<!--</mapper>-->

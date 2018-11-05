@@ -11,24 +11,25 @@ import java.util.Date;
  */
 @Data
 public class Submission {
-    private int id;
+    private Integer id;
     private String code;
     private String username;
     private Date date;
-    private int problemId;
-    private int result;
-    private double time;
-    private int memory;
-    private int length;
-    private int language;
-    public String toSubmitString() {
+    private Integer problemId;
+    private Integer result;
+    private Double time;
+    private Integer memory;
+    private Integer length;
+    private Integer language;
+
+    public String toString() {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("id",id);
-        jsonObject.put("code",code);
-        jsonObject.put("userId",username);
-        jsonObject.put("date",date);
-        jsonObject.put("problemId",problemId);
-        jsonObject.put("language",language);
+        jsonObject.put("id", id);
+        jsonObject.put("code", code);
+        jsonObject.put("userId", username);
+        jsonObject.put("date", date);
+        jsonObject.put("problemId", problemId);
+        jsonObject.put("language", language);
         return jsonObject.toJSONString();
     }
 }

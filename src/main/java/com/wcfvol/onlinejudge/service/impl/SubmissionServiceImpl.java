@@ -39,7 +39,7 @@ public class SubmissionServiceImpl implements SubmissionService {
     }
 
     @Override
-    public Submission getCodeByid(int id) {
+    public Submission getCodeById(int id) {
         return submissionDAO.getCodeById(id);
     }
 
@@ -56,14 +56,14 @@ public class SubmissionServiceImpl implements SubmissionService {
     }
 
     @Override
-    public SubmitPo getSubmitPojoBysubmission(Submission submission) {
+    public SubmitPo getSubmitPojoBySubmission(Submission submission) {
         SubmitPo submitPo = new SubmitPo();
         submitPo.setLanguage(submission.getLanguage());
         submitPo.setUsername(submission.getUsername());
         submitPo.setProblemId(submission.getProblemId());
         submitPo.setCode(submission.getCode());
-        submitPo.setMemLimit(submission.getMemory());
         Problem problem =  problemService.getProblemById(submission.getProblemId());
+        submitPo.setMemLimit(problem.getMemLimit());
         submitPo.setTimeLimit(problem.getTimeLimit());
         submitPo.setMemLimit(problem.getMemLimit());
         submitPo.setTestCase(problem.getTestCase());

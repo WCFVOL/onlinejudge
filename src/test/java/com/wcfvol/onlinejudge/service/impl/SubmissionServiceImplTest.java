@@ -26,7 +26,7 @@ public class SubmissionServiceImplTest {
         // result=#{result},time#{time},memory=#{memory},length=#{length}  WHERE id=#{id}"})
         submission.setId(5);
         submission.setResult(1);
-        submission.setTime(5);
+        submission.setTime(5.0);
         submission.setMemory(5);
         submission.setLength(100);
         submissionService.updateResult(submission);

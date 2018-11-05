@@ -9,8 +9,11 @@ import com.wcfvol.onlinejudge.pojo.po.TaskPo;
 import com.wcfvol.onlinejudge.service.SubmissionService;
 import com.wcfvol.onlinejudge.service.UserService;
 import com.wcfvol.onlinejudge.util.JwtUtil;
+import org.apache.ibatis.transaction.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
@@ -33,33 +36,38 @@ public class CodeController {
 
     @RequestMapping(value = "/submit", method = RequestMethod.POST)
     @ResponseBody
-    public RestResult submitCode(HttpServletRequest request, @RequestBody String body) throws ExecutionException, InterruptedException, URISyntaxException {
-        System.out.println(body);
+    public RestResult submitCode(HttpServletRequest request, @RequestBody String body) {
         Cookie[] cookies = request.getCookies();
-        String token = cookies[cookies.length-1].getValue();
+        String token = cookies[cookies.length - 1].getValue();
         String username = JwtUtil.getUsernameFromToken(token);
         userService.addAttempt(username);
         Submission submission = submissionService.getSubmissionByBody(body);
         submissionService.addSubmission(submission);
-        SubmitPo submitPo = submissionService.getSubmitPojoBysubmission(submission);
+        SubmitPo submitPo = submissionService.getSubmitPojoBySubmission(submission);
         TaskPo task = new TaskPo();
         task.setData(submitPo.toString());
         task.setTaskId(1);
-        System.out.println(task.toString());
-        sendCode.send(task.toString());
-        return RestResult.ok().setData(submission);
+        if (sendCode.send(task.toString())) {
+            User user = userService.getUser(username);
+            user.setAttempt(user.getAttempt() + 1);
+            return RestResult.ok().setData(submission);
+        }
+        submission.setResult(5);
+        submissionService.updateResult(submission);
+        return RestResult.fail(0, "提交评测失败");
+
     }
 
-    @RequestMapping(value = "/code/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/code/{id}", method = RequestMethod.GET)
     @ResponseBody
     public RestResult getCode(HttpServletRequest request, @PathVariable("id") int id) {
         Cookie[] cookies = request.getCookies();
-        String token = cookies[cookies.length-1].getValue();
+        String token = cookies[cookies.length - 1].getValue();
         String username = JwtUtil.getUsernameFromToken(token);
         User user = userService.getUser(username);
-        Submission sub=submissionService.getCodeByid(id);
+        Submission sub = submissionService.getCodeById(id);
         if (!sub.getUsername().equals(user.getUsername())) {
-            return RestResult.fail(0,"没有权限!");
+            return RestResult.fail(0, "没有权限!");
         }
         return RestResult.ok().setData(sub.getCode());
     }
