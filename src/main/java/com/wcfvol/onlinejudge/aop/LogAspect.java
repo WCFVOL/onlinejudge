@@ -22,17 +22,19 @@ import java.util.Enumeration;
 @Aspect
 @Component
 public class LogAspect {
-    private Logger logger =  LoggerFactory.getLogger(getClass());
+    private Logger logger = LoggerFactory.getLogger(getClass());
+
     @Pointcut("execution(public * com.wcfvol.onlinejudge.controller..*.*(..))")
     public void webLog() {
     }
+
     @Before("webLog()")
     public void logBefore(JoinPoint joinPoint) {
         ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest httpServletRequest = servletRequestAttributes.getRequest();
         StringBuilder log = new StringBuilder("URL: " + httpServletRequest.getRequestURL() +
                 " HttpMethod: " + httpServletRequest.getMethod() +
-                " IP: " + httpServletRequest.getRemoteAddr());
+                " IP: " + httpServletRequest.getRemoteAddr() + " QueryString: " + httpServletRequest.getQueryString());
         Enumeration<String> enu = httpServletRequest.getParameterNames();
         while (enu.hasMoreElements()) {
             String name = enu.nextElement();
@@ -40,6 +42,7 @@ public class LogAspect {
         }
         logger.info(log.toString());
     }
+
     @AfterReturning(returning = "ret", pointcut = "webLog()")
     public void doAfterReturning(Object ret) {
         logger.info("RESPONSE : " + ret);

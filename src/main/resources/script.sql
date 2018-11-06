@@ -5,7 +5,6 @@ create table announcements
   title     varchar(20) not null,
   date      date        not null,
   author    varchar(20) not null,
-  author_id int         not null,
   content   text        null,
   constraint announcements_id_uindex
   unique (id)
