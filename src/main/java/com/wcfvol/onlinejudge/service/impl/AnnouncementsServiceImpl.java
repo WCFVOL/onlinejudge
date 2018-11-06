@@ -17,8 +17,6 @@ public class AnnouncementsServiceImpl implements AnnouncementsService {
 
     @Override
     public List<Announcements> getAllAnnouncements(AnnouncementsQueryParam param) {
-        Page page = PageHelper.startPage(param.getPageNum(),param.getPageSize());
-        System.out.println(param.getPageNum());
         return announcementsDAO.queryAll(param);
     }
 

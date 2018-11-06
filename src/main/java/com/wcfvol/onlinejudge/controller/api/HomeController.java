@@ -24,10 +24,5 @@ public class HomeController {
     public RestResult getAnnouncements(@RequestBody AnnouncementsQueryParam param) {
         return RestResult.ok().setData( announcementsService.getAllAnnouncements(param));
     }
-    @RequestMapping(value = "/addAnnouncement",method = RequestMethod.POST)
-    @ResponseBody
-    public RestResult addAnnouncement(@RequestBody Announcements announcements) {
-        announcementsService.addAnnouncements(announcements);
-        return RestResult.ok();
-    }
+
 }

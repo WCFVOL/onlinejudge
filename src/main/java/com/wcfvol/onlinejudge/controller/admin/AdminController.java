@@ -1,18 +1,12 @@
 package com.wcfvol.onlinejudge.controller.admin;
 
 import com.alibaba.fastjson.JSONObject;
-import com.wcfvol.onlinejudge.pojo.data.Problem;
-import com.wcfvol.onlinejudge.pojo.data.ProblemList;
-import com.wcfvol.onlinejudge.pojo.data.Submission;
+import com.wcfvol.onlinejudge.pojo.data.*;
 import com.wcfvol.onlinejudge.client.SendCode;
 import com.wcfvol.onlinejudge.pojo.RestResult;
-import com.wcfvol.onlinejudge.pojo.data.User;
 import com.wcfvol.onlinejudge.pojo.params.AddProblemParam;
 import com.wcfvol.onlinejudge.pojo.po.TaskPo;
-import com.wcfvol.onlinejudge.service.ProblemListService;
-import com.wcfvol.onlinejudge.service.ProblemService;
-import com.wcfvol.onlinejudge.service.SubmissionService;
-import com.wcfvol.onlinejudge.service.UserService;
+import com.wcfvol.onlinejudge.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,6 +36,14 @@ public class AdminController {
     @Autowired
     SendCode sendCode;
 
+    @Autowired
+    AnnouncementsService announcementsService;
+    @RequestMapping(value = "/add_announcement",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResult addAnnouncement(@RequestBody Announcements announcements) {
+        announcementsService.addAnnouncements(announcements);
+        return RestResult.ok();
+    }
 
     @RequestMapping(value = "/set_result", method = RequestMethod.POST)
     public RestResult setResult(@RequestBody String body) {
@@ -87,8 +89,6 @@ public class AdminController {
     @RequestMapping(value = "/add_input", method = RequestMethod.POST)
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public RestResult addInput(@RequestParam("file") MultipartFile input, @RequestParam("id") int id) throws ExecutionException, InterruptedException, IOException, URISyntaxException {
-        // TODO: 2018/7/12 CASE ID
-        System.out.println(123);
         TaskPo task = new TaskPo();
         task.setTaskId(2);
         JSONObject json = new JSONObject();
@@ -100,15 +100,12 @@ public class AdminController {
             json.put("caseId", problem.getTestCase() % 10000);
         }
         task.setData(json.toJSONString());
-        System.out.println(task.toString());
         sendCode.send(task.toString());
         return RestResult.ok();
     }
 
     @RequestMapping(value = "/add_output", method = RequestMethod.POST)
-    public RestResult addOutput(@RequestParam("file") MultipartFile output, @RequestParam("id") int id) throws ExecutionException, InterruptedException, IOException, URISyntaxException {
-        // TODO: 2018/7/2
-        System.out.println(123);
+    public RestResult addOutput(@RequestParam("file") MultipartFile output, @RequestParam("id") int id) throws IOException {
         TaskPo task = new TaskPo();
         task.setTaskId(2);
         JSONObject json = new JSONObject();
@@ -120,7 +117,6 @@ public class AdminController {
             json.put("caseId", problem.getTestCase() / 10000);
         }
         task.setData(json.toJSONString());
-        System.out.println(task.toString());
         sendCode.send(task.toString());
         return RestResult.ok();
     }

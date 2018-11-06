@@ -35,8 +35,6 @@ public class SendCode {
             map.add("task", data);
             HttpEntity<MultiValueMap<String, String>> httpEntity = new HttpEntity<>(map, httpHeaders);
             ResponseEntity<String> resp = restTemplate.postForEntity(uri, httpEntity, String.class);
-            System.out.println(resp.getStatusCode());
-            System.out.println(resp.getStatusCodeValue());
             return resp.getStatusCode().is2xxSuccessful();
         } catch (Exception e) {
             logger.error(e.toString());
