@@ -1,6 +1,7 @@
 package com.wcfvol.onlinejudge.service.impl;
 
-import com.wcfvol.onlinejudge.dao.UserDAO;
+import com.wcfvol.onlinejudge.mapper.dao.UserDAO;
+import com.wcfvol.onlinejudge.mapper.ext.UserMapper;
 import com.wcfvol.onlinejudge.pojo.data.User;
 import com.wcfvol.onlinejudge.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,9 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    UserDAO userDAO;
+    UserMapper userDAO;
+//    @Autowired
+//    UserDAO userDAO;
 
     @Override
     public User getUser(String username) {
@@ -28,6 +31,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void addAttempt(String username) {
         userDAO.updateAttempt(username);
+    }
+
+    @Override
+    public User getUserBySubmissionId(Integer id) {
+        return userDAO.getUserBySubmissionId(id);
     }
 
 }

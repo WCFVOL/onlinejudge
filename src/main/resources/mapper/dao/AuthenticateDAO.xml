@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace = "com.wcfvol.onlinejudge.dao.AuthenticateDAO">
+<mapper namespace = "com.wcfvol.onlinejudge.mapper.dao.AuthenticateDAO">
     <insert id="addAuthenticate" parameterType="com.wcfvol.onlinejudge.pojo.data.Authenticate">
         insert into auth(
         username,salt,password

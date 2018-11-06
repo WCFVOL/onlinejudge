@@ -1,4 +1,4 @@
-package com.wcfvol.onlinejudge.dao;
+package com.wcfvol.onlinejudge.mapper.dao;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

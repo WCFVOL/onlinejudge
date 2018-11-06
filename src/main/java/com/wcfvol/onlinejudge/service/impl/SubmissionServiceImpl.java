@@ -1,7 +1,7 @@
 package com.wcfvol.onlinejudge.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.wcfvol.onlinejudge.dao.SubmissionDAO;
+import com.wcfvol.onlinejudge.mapper.dao.SubmissionDAO;
 import com.wcfvol.onlinejudge.pojo.data.Problem;
 import com.wcfvol.onlinejudge.pojo.data.Submission;
 import com.wcfvol.onlinejudge.pojo.po.SubmitPo;

@@ -1,7 +1,7 @@
 package com.wcfvol.onlinejudge.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.wcfvol.onlinejudge.dao.AnnouncementsDAO;
+import com.wcfvol.onlinejudge.mapper.dao.AnnouncementsDAO;
 import com.wcfvol.onlinejudge.pojo.data.Announcements;
 import com.wcfvol.onlinejudge.pojo.params.AnnouncementsQueryParam;
 import com.wcfvol.onlinejudge.service.AnnouncementsService;

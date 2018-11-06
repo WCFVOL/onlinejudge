@@ -1,6 +1,6 @@
 package com.wcfvol.onlinejudge.service.impl;
 
-import com.wcfvol.onlinejudge.dao.AuthenticateDAO;
+import com.wcfvol.onlinejudge.mapper.dao.AuthenticateDAO;
 import com.wcfvol.onlinejudge.pojo.data.Authenticate;
 import com.wcfvol.onlinejudge.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;

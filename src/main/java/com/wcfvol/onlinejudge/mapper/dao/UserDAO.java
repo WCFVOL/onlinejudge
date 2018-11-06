@@ -1,4 +1,4 @@
-package com.wcfvol.onlinejudge.dao;
+package com.wcfvol.onlinejudge.mapper.dao;
 
 import com.wcfvol.onlinejudge.pojo.data.User;
 import org.apache.ibatis.annotations.*;

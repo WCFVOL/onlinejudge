@@ -6,11 +6,13 @@ import com.wcfvol.onlinejudge.pojo.data.ProblemList;
 import com.wcfvol.onlinejudge.pojo.data.Submission;
 import com.wcfvol.onlinejudge.client.SendCode;
 import com.wcfvol.onlinejudge.pojo.RestResult;
+import com.wcfvol.onlinejudge.pojo.data.User;
 import com.wcfvol.onlinejudge.pojo.params.AddProblemParam;
 import com.wcfvol.onlinejudge.pojo.po.TaskPo;
 import com.wcfvol.onlinejudge.service.ProblemListService;
 import com.wcfvol.onlinejudge.service.ProblemService;
 import com.wcfvol.onlinejudge.service.SubmissionService;
+import com.wcfvol.onlinejudge.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,10 +38,12 @@ public class AdminController {
     @Autowired
     ProblemListService problemListService;
     @Autowired
+    UserService userService;
+    @Autowired
     SendCode sendCode;
 
 
-    @RequestMapping(value = "/set_result",method = RequestMethod.POST)
+    @RequestMapping(value = "/set_result", method = RequestMethod.POST)
     public RestResult setResult(@RequestBody String body) {
         JSONObject jsonBody = (JSONObject) JSONObject.parse(body);
         Submission submission = new Submission();
@@ -49,10 +53,15 @@ public class AdminController {
         submission.setTime(jsonBody.getDouble("Time"));
         submission.setResult(jsonBody.getInteger("Result"));
         submissionService.updateResult(submission);
+        //userService.getUser();
+        User user = userService.getUserBySubmissionId(submission.getId());
+        if (submission.getResult().equals(1)) {
+            user.setSolved(user.getSolved() + 1);
+        }
         return RestResult.ok();
     }
 
-    @RequestMapping(value = "/add_problem",method = RequestMethod.POST)
+    @RequestMapping(value = "/add_problem", method = RequestMethod.POST)
     @Transactional(rollbackFor = Exception.class)
     public RestResult addProblem(@RequestBody AddProblemParam param) {
         Problem problem = new Problem();
@@ -75,39 +84,40 @@ public class AdminController {
         return RestResult.ok();
     }
 
-    @RequestMapping(value = "/add_input",method = RequestMethod.POST)
-    @Transactional(isolation=Isolation.SERIALIZABLE)
-    public RestResult addInput(@RequestParam("file")MultipartFile input, @RequestParam("id") int id) throws ExecutionException, InterruptedException, IOException, URISyntaxException {
+    @RequestMapping(value = "/add_input", method = RequestMethod.POST)
+    @Transactional(isolation = Isolation.SERIALIZABLE)
+    public RestResult addInput(@RequestParam("file") MultipartFile input, @RequestParam("id") int id) throws ExecutionException, InterruptedException, IOException, URISyntaxException {
         // TODO: 2018/7/12 CASE ID
         System.out.println(123);
         TaskPo task = new TaskPo();
         task.setTaskId(2);
         JSONObject json = new JSONObject();
-        json.put("input",new String(input.getBytes()));
-        json.put("problemId",id);
-        synchronized(problemService) {
+        json.put("input", new String(input.getBytes()));
+        json.put("problemId", id);
+        synchronized (problemService) {
             Problem problem = problemService.getProblemById(id);
-            problemService.updateCaseId(problem.getId(),1);
-            json.put("caseId", problem.getTestCase()%10000);
+            problemService.updateCaseId(problem.getId(), 1);
+            json.put("caseId", problem.getTestCase() % 10000);
         }
         task.setData(json.toJSONString());
         System.out.println(task.toString());
         sendCode.send(task.toString());
         return RestResult.ok();
     }
-    @RequestMapping(value = "/add_output",method = RequestMethod.POST)
-    public RestResult addOutput(@RequestParam("file")MultipartFile output, @RequestParam("id") int id) throws ExecutionException, InterruptedException, IOException, URISyntaxException {
+
+    @RequestMapping(value = "/add_output", method = RequestMethod.POST)
+    public RestResult addOutput(@RequestParam("file") MultipartFile output, @RequestParam("id") int id) throws ExecutionException, InterruptedException, IOException, URISyntaxException {
         // TODO: 2018/7/2
         System.out.println(123);
         TaskPo task = new TaskPo();
         task.setTaskId(2);
         JSONObject json = new JSONObject();
-        json.put("output",new String(output.getBytes()));
-        json.put("problemId",id);
-        synchronized(problemService) {
+        json.put("output", new String(output.getBytes()));
+        json.put("problemId", id);
+        synchronized (problemService) {
             Problem problem = problemService.getProblemById(id);
-            problemService.updateCaseId(problem.getId(),10000);
-            json.put("caseId", problem.getTestCase()/10000);
+            problemService.updateCaseId(problem.getId(), 10000);
+            json.put("caseId", problem.getTestCase() / 10000);
         }
         task.setData(json.toJSONString());
         System.out.println(task.toString());

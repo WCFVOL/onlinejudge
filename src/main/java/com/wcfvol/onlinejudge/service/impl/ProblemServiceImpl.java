@@ -1,6 +1,6 @@
 package com.wcfvol.onlinejudge.service.impl;
 
-import com.wcfvol.onlinejudge.dao.ProblemDAO;
+import com.wcfvol.onlinejudge.mapper.dao.ProblemDAO;
 import com.wcfvol.onlinejudge.pojo.data.Problem;
 import com.wcfvol.onlinejudge.service.ProblemService;
 import org.springframework.beans.factory.annotation.Autowired;
