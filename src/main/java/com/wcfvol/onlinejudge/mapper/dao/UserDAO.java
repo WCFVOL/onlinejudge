@@ -18,4 +18,7 @@ public interface UserDAO {
 
     @Update({"UPDATE ",TABLE_NAME," SET attempt = attempt + 1 WHERE username = #{username}"})
     void updateAttempt(String username);
+
+    @Update({"UPDATE ",TABLE_NAME," SET solved = solved + 1 WHERE username = #{username}"})
+    void updateSolved(String username);
 }

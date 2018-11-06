@@ -34,6 +34,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void addSolved(String username) {
+        userDAO.updateSolved(username);
+    }
+
+    @Override
     public User getUserBySubmissionId(Integer id) {
         return userDAO.getUserBySubmissionId(id);
     }

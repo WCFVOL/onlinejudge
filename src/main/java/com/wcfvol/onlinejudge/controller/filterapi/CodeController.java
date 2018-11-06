@@ -40,7 +40,6 @@ public class CodeController {
         Cookie[] cookies = request.getCookies();
         String token = cookies[cookies.length - 1].getValue();
         String username = JwtUtil.getUsernameFromToken(token);
-        userService.addAttempt(username);
         Submission submission = submissionService.getSubmissionByBody(body);
         submissionService.addSubmission(submission);
         SubmitPo submitPo = submissionService.getSubmitPojoBySubmission(submission);
@@ -48,8 +47,7 @@ public class CodeController {
         task.setData(submitPo.toString());
         task.setTaskId(1);
         if (sendCode.send(task.toString())) {
-            User user = userService.getUser(username);
-            user.setAttempt(user.getAttempt() + 1);
+            userService.addAttempt(username);
             return RestResult.ok().setData(submission);
         }
         submission.setResult(5);

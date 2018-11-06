@@ -53,10 +53,10 @@ public class AdminController {
         submission.setTime(jsonBody.getDouble("Time"));
         submission.setResult(jsonBody.getInteger("Result"));
         submissionService.updateResult(submission);
-        //userService.getUser();
-        User user = userService.getUserBySubmissionId(submission.getId());
         if (submission.getResult().equals(0)) {
-            user.setSolved(user.getSolved() + 1);
+            User user = userService.getUserBySubmissionId(submission.getId());
+            userService.addSolved(user.getUsername());
+            return RestResult.ok();
         }
         return RestResult.ok();
     }
