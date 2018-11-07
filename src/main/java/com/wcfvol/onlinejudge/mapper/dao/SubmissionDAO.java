@@ -1,6 +1,7 @@
 package com.wcfvol.onlinejudge.mapper.dao;
 
 import com.wcfvol.onlinejudge.pojo.data.Submission;
+import com.wcfvol.onlinejudge.pojo.params.SubmissionsQueryParam;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -13,18 +14,19 @@ public interface SubmissionDAO {
     String SELECT_FIELDS = " id, username, date, problem_id, result, time, memory, length ,language";
     String SELECT_LIST = " id, username, date, problem_id, result, time, memory, length ,language";
 
-    @Insert({"INSERT INTO ",TABLE_NAME,"(",INSERT_FIELDS_SUBMIT,") VALUES (#{code},#{username},#{date},#{problemId},#{language}) "})
+//    @Insert({"INSERT INTO ",TABLE_NAME,"(",INSERT_FIELDS_SUBMIT,") VALUES (#{code},#{username},#{date},#{problemId},#{language}) "})
     void addSubmission(Submission submission);
 
-    @Update({"UPDATE ",TABLE_NAME," SET result=#{result}, time=#{time}, memory=#{memory}, length=#{length}  WHERE id=#{id}"})
+//    @Update({"UPDATE ",TABLE_NAME," SET result=#{result}, time=#{time}, memory=#{memory}, length=#{length}  WHERE id=#{id}"})
     void addResult(Submission submission);
 
-    @Select({"SELECT ",SELECT_FIELDS," FROM ",TABLE_NAME,"ORDER BY id DESC"})
+//    @Select({"SELECT ",SELECT_FIELDS," FROM ",TABLE_NAME,"ORDER BY id DESC"})
     List<Submission> getAllSubmission();
 
-    @Select({"SELECT ", SELECT_LIST," FROM ",TABLE_NAME," LIMIT #{start}, #{size}"})
-    List<Submission> getSubmissionList(@Param("start") int start, @Param("size") int size);
+    List<Submission> getSubmissionsByParam(SubmissionsQueryParam submissionsQueryParam);
+//    @Select({"SELECT ", SELECT_LIST," FROM ",TABLE_NAME," LIMIT #{start}, #{size}"})
+//    List<Submission> getSubmissionList(@Param("start") int start, @Param("size") int size);
 
-    @Select({"SELECT * FROM ",TABLE_NAME, " where id = #{id} " })
+//    @Select({"SELECT * FROM ",TABLE_NAME, " where id = #{id} " })
     Submission getSubmissionById(int id);
 }

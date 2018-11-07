@@ -1,6 +1,7 @@
 package com.wcfvol.onlinejudge.service.impl;
 
 import com.wcfvol.onlinejudge.pojo.data.Submission;
+import com.wcfvol.onlinejudge.pojo.params.SubmissionsQueryParam;
 import com.wcfvol.onlinejudge.service.SubmissionService;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -9,9 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Ignore
+//@Ignore
 public class SubmissionServiceImplTest {
     @Autowired
     SubmissionService submissionService;
@@ -19,6 +22,13 @@ public class SubmissionServiceImplTest {
     public void addSubmission() {
     }
 
+    @Test
+    public void getSubmissionByParams() {
+        List<Submission> result = submissionService.getSubmissionsByParam(new SubmissionsQueryParam());
+        for (Submission submission : result) {
+            System.out.println(submission);
+        }
+    }
     @Test
     public void updateResult() {
         Submission submission = new Submission();

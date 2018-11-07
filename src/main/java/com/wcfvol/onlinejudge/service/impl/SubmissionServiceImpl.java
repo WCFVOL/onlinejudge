@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.wcfvol.onlinejudge.mapper.dao.SubmissionDAO;
 import com.wcfvol.onlinejudge.pojo.data.Problem;
 import com.wcfvol.onlinejudge.pojo.data.Submission;
+import com.wcfvol.onlinejudge.pojo.params.SubmissionsQueryParam;
 import com.wcfvol.onlinejudge.pojo.po.SubmitPo;
 import com.wcfvol.onlinejudge.service.ProblemService;
 import com.wcfvol.onlinejudge.service.SubmissionService;
@@ -34,9 +35,14 @@ public class SubmissionServiceImpl implements SubmissionService {
     }
 
     @Override
-    public List<Submission> getSubmissionList(int start, int size) {
-        return submissionDAO.getSubmissionList(start,size);
+    public List<Submission> getSubmissionsByParam(SubmissionsQueryParam param) {
+        return submissionDAO.getSubmissionsByParam(param);
     }
+
+//    @Override
+//    public List<Submission> getSubmissionList(int start, int size) {
+////        return submissionDAO.getSubmissionList(start,size);
+//    }
 
     @Override
     public Submission getSubmissionById(int id) {

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.wcfvol.onlinejudge.mapper.dao.SubmissionDAO">
+
+    <insert id="addSubmission" parameterType="com.wcfvol.onlinejudge.pojo.data.Submission">
+        insert into contest(
+        code, username, date, problem_id ,language
+        )
+        values (
+        #{code},#{username},#{date},#{problemId},#{language}
+        )
+    </insert>
+    <update id="addResult" parameterType="com.wcfvol.onlinejudge.pojo.data.Submission">
+        update contest set result=#{result}, time=#{time}, memory=#{memory}, length=#{length}  WHERE id=#{id}
+    </update>
+    <select id="getAllSubmission"
+            resultType="com.wcfvol.onlinejudge.pojo.data.Submission">
+        select id, username, date, problem_id, result, time, memory, length ,language
+         from submissions ORDER BY id DESC
+    </select>
+    <select id="getSubmissionById" parameterType="java.lang.Integer" resultType="com.wcfvol.onlinejudge.pojo.data.Submission">
+        select id, username, date, problem_id, result, time, memory, length ,language from submissions where id = #{id}
+    </select>
+    <select id="getSubmissionsByParam" parameterType="com.wcfvol.onlinejudge.pojo.params.SubmissionsQueryParam" resultType="com.wcfvol.onlinejudge.pojo.data.Submission">
+        select id, username, date, problem_id, result, time, memory, length ,language
+        from submissions
+        <trim prefix="where" prefixOverrides="and">
+            <if test="username != null">
+                username = #{username}
+            </if>
+            <if test="problemId != null">
+                problem_id = #{problemId}
+            </if>
+            <if test="result != null">
+                result = #{result}
+            </if>
+            <if test="language != null">
+                language = #{language}
+            </if>
+        </trim>
+    </select>
+</mapper>

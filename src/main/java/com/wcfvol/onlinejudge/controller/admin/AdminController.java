@@ -122,4 +122,8 @@ public class AdminController {
         return RestResult.ok();
     }
 
+    @RequestMapping(value = "/add_contest", method = RequestMethod.POST)
+    public RestResult addContest(@RequestBody Contest contest) {
+        return RestResult.ok();
+    }
 }
