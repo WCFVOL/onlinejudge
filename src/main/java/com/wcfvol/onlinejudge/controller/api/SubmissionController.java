@@ -19,7 +19,7 @@ public class SubmissionController {
 
     @RequestMapping(value = "/submissions",method = RequestMethod.POST)
     public RestResult getAllSubmissions(@RequestBody SubmissionsQueryParam param) {
-        Page page = (Page)submissionService.getSubmissionsByParam(new SubmissionsQueryParam());
+        Page page = (Page)submissionService.getSubmissionsByParam(param);
         return RestResult.ok().setTotal(page.getTotal()).setData(page.getResult());
     }
 
