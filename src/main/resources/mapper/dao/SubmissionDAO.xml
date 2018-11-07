@@ -21,7 +21,7 @@
          from submissions ORDER BY id DESC
     </select>
     <select id="getSubmissionById" parameterType="java.lang.Integer" resultType="com.wcfvol.onlinejudge.pojo.data.Submission">
-        select id, username, date, problem_id, result, time, memory, length ,language from submissions where id = #{id}
+        select id, code, username, date, problem_id, result, time, memory, length ,language from submissions where id = #{id}
     </select>
     <select id="getSubmissionsByParam" parameterType="com.wcfvol.onlinejudge.pojo.params.SubmissionsQueryParam" resultType="com.wcfvol.onlinejudge.pojo.data.Submission">
         select id, username, date, problem_id, result, time, memory, length ,language
