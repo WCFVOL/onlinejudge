@@ -25,6 +25,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addUser(User user) {
+        user.setSolved(0);
+        user.setAttempt(0);
+        user.setIsAdmin(0);
         userDAO.addUser(user);
     }
 
