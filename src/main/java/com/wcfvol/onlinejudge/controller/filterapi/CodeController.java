@@ -66,7 +66,7 @@ public class CodeController {
         String token = cookies[cookies.length - 1].getValue();
         String username = JwtUtil.getUsernameFromToken(token);
         User user = userService.getUser(username);
-        Submission sub = submissionService.getCodeById(id);
+        Submission sub = submissionService.getSubmissionById(id);
         if (!sub.getUsername().equals(user.getUsername())) {
             return RestResult.fail(0, "没有权限!");
         }

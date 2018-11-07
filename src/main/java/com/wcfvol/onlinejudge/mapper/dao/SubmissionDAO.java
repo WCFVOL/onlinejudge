@@ -26,5 +26,5 @@ public interface SubmissionDAO {
     List<Submission> getSubmissionList(@Param("start") int start, @Param("size") int size);
 
     @Select({"SELECT username,code FROM ",TABLE_NAME, " where id = #{id} " })
-    Submission getCodeById(int id);
+    Submission getSubmissionById(int id);
 }

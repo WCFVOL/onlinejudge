@@ -58,7 +58,7 @@ public class AdminController {
         if (submission.getResult().equals(0)) {
             User user = userService.getUserBySubmissionId(submission.getId());
             userService.addSolved(user.getUsername());
-            problemService.addAcceptNum(submission.getProblemId());
+            problemService.addAcceptNum(submissionService.getSubmissionById(submission.getId()).getProblemId());
             return RestResult.ok();
         }
         return RestResult.ok();

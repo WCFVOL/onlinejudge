@@ -39,8 +39,8 @@ public class SubmissionServiceImpl implements SubmissionService {
     }
 
     @Override
-    public Submission getCodeById(int id) {
-        return submissionDAO.getCodeById(id);
+    public Submission getSubmissionById(int id) {
+        return submissionDAO.getSubmissionById(id);
     }
 
     @Override
