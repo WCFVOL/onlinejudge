@@ -13,7 +13,7 @@
         <!--)-->
     <!--</insert>-->
     <update id="addResult" parameterType="com.wcfvol.onlinejudge.pojo.data.Submission">
-        update contest set result=#{result}, time=#{time}, memory=#{memory}, length=#{length}  WHERE id=#{id}
+        update submissions set result=#{result}, time=#{time}, memory=#{memory}, length=#{length}  WHERE id=#{id}
     </update>
     <select id="getAllSubmission"
             resultType="com.wcfvol.onlinejudge.pojo.data.Submission">
