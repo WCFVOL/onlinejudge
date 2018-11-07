@@ -24,4 +24,10 @@ public interface ProblemDAO {
 
     @Update({"UPDATE ",TABLE_NAME," SET test_case=test_case+#{num}  WHERE id=#{id}"})
     void updateCaseId(@Param("id") int id,@Param("num") int num);
+
+    @Update({"UPDATE ",TABLE_NAME," SET submit_num = submit_num + 1 WHERE id = #{id}"})
+    void updateSubmitNum(int id);
+
+    @Update({"UPDATE ",TABLE_NAME," SET accept_num = accept_num + 1 WHERE id = #{id}"})
+    void updateAcceptNum(int id);
 }

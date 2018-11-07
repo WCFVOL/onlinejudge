@@ -6,6 +6,7 @@ import com.wcfvol.onlinejudge.client.SendCode;
 import com.wcfvol.onlinejudge.pojo.RestResult;
 import com.wcfvol.onlinejudge.pojo.po.SubmitPo;
 import com.wcfvol.onlinejudge.pojo.po.TaskPo;
+import com.wcfvol.onlinejudge.service.ProblemService;
 import com.wcfvol.onlinejudge.service.SubmissionService;
 import com.wcfvol.onlinejudge.service.UserService;
 import com.wcfvol.onlinejudge.util.JwtUtil;
@@ -33,6 +34,8 @@ public class CodeController {
     UserService userService;
     @Autowired
     SendCode sendCode;
+    @Autowired
+    ProblemService problemService;
 
     @RequestMapping(value = "/submit", method = RequestMethod.POST)
     @ResponseBody
@@ -48,6 +51,7 @@ public class CodeController {
         task.setTaskId(1);
         if (sendCode.send(task.toString())) {
             userService.addAttempt(username);
+            problemService.addSubmitNum(submission.getId());
             return RestResult.ok().setData(submission);
         }
         submission.setResult(5);

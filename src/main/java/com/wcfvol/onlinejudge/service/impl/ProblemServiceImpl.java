@@ -26,4 +26,14 @@ public class ProblemServiceImpl implements ProblemService {
     public void updateCaseId(int id,int num) {
         problemDAO.updateCaseId(id, num);
     }
+
+    @Override
+    public void addSubmitNum(int id) {
+        problemDAO.updateSubmitNum(id);
+    }
+
+    @Override
+    public void addAcceptNum(int id) {
+        problemDAO.updateAcceptNum(id);
+    }
 }
