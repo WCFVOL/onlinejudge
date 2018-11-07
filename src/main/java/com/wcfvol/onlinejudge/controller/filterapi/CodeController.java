@@ -51,7 +51,7 @@ public class CodeController {
         task.setTaskId(1);
         if (sendCode.send(task.toString())) {
             userService.addAttempt(username);
-            problemService.addSubmitNum(submission.getId());
+            problemService.addSubmitNum(submission.getProblemId());
             return RestResult.ok().setData(submission);
         }
         submission.setResult(5);
