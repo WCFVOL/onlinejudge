@@ -4,14 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace = "com.wcfvol.onlinejudge.mapper.dao.SubmissionDAO">
 
-    <insert id="addSubmission" parameterType="com.wcfvol.onlinejudge.pojo.data.Submission">
-        insert into submissions(
-        code, username, date, problem_id ,language
-        )
-        values (
-        #{code},#{username},#{date},#{problemId},#{language}
-        )
-    </insert>
+    <!--<insert id="addSubmission" parameterType="com.wcfvol.onlinejudge.pojo.data.Submission">-->
+        <!--insert into submissions(-->
+        <!--code, username, date, problem_id ,language-->
+        <!--)-->
+        <!--values (-->
+        <!--#{code},#{username},#{date},#{problemId},#{language}-->
+        <!--)-->
+    <!--</insert>-->
     <update id="addResult" parameterType="com.wcfvol.onlinejudge.pojo.data.Submission">
         update contest set result=#{result}, time=#{time}, memory=#{memory}, length=#{length}  WHERE id=#{id}
     </update>
