@@ -25,6 +25,6 @@ public interface SubmissionDAO {
     @Select({"SELECT ", SELECT_LIST," FROM ",TABLE_NAME," LIMIT #{start}, #{size}"})
     List<Submission> getSubmissionList(@Param("start") int start, @Param("size") int size);
 
-    @Select({"SELECT username,code FROM ",TABLE_NAME, " where id = #{id} " })
+    @Select({"SELECT * FROM ",TABLE_NAME, " where id = #{id} " })
     Submission getSubmissionById(int id);
 }
