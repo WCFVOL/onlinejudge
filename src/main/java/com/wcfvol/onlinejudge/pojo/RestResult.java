@@ -13,6 +13,17 @@ public class RestResult<T> implements Serializable {
     private int code;
     private String msg;
     private T data;
+
+    public Long getTotal() {
+        return total;
+    }
+
+    public RestResult<T> setTotal(Long total) {
+        this.total = total;
+        return this;
+    }
+
+    private Long total;
     public Boolean isSuccess() {
         if (code == 1) {
             return true;

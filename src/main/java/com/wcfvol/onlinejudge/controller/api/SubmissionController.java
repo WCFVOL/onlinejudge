@@ -1,5 +1,6 @@
 package com.wcfvol.onlinejudge.controller.api;
 
+import com.github.pagehelper.Page;
 import com.wcfvol.onlinejudge.pojo.RestResult;
 import com.wcfvol.onlinejudge.pojo.params.SubmissionsQueryParam;
 import com.wcfvol.onlinejudge.service.SubmissionService;
@@ -18,7 +19,8 @@ public class SubmissionController {
 
     @RequestMapping(value = "/submissions",method = RequestMethod.POST)
     public RestResult getAllSubmissions(@RequestBody SubmissionsQueryParam param) {
-        return RestResult.ok().setData(submissionService.getSubmissionsByParam(param));
+        Page page = (Page)submissionService.getSubmissionsByParam(new SubmissionsQueryParam());
+        return RestResult.ok().setTotal(page.getTotal()).setData(page.getResult());
     }
 
 }

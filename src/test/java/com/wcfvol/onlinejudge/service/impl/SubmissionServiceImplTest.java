@@ -1,5 +1,8 @@
 package com.wcfvol.onlinejudge.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.wcfvol.onlinejudge.pojo.PageInfo;
 import com.wcfvol.onlinejudge.pojo.data.Submission;
 import com.wcfvol.onlinejudge.pojo.params.SubmissionsQueryParam;
 import com.wcfvol.onlinejudge.service.SubmissionService;
@@ -24,10 +27,9 @@ public class SubmissionServiceImplTest {
 
     @Test
     public void getSubmissionByParams() {
-        List<Submission> result = submissionService.getSubmissionsByParam(new SubmissionsQueryParam());
-        for (Submission submission : result) {
-            System.out.println(submission);
-        }
+        //PageHelper.startPage(1,20);
+       Page page = (Page)submissionService.getSubmissionsByParam(new SubmissionsQueryParam());
+        System.out.println(page);
     }
     @Test
     public void updateResult() {
