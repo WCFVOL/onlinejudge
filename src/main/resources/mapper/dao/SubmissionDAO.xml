@@ -5,7 +5,7 @@
 <mapper namespace = "com.wcfvol.onlinejudge.mapper.dao.SubmissionDAO">
 
     <insert id="addSubmission" parameterType="com.wcfvol.onlinejudge.pojo.data.Submission">
-        insert into contest(
+        insert into submissions(
         code, username, date, problem_id ,language
         )
         values (
