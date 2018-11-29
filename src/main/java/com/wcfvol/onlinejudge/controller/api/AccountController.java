@@ -67,14 +67,17 @@ public class AccountController {
         Authenticate auth = authList.get(0);
         String newPassword = MD5.toMD5(param.getPassword()+auth.getSalt());
         if (newPassword.equals(auth.getPassword())) {
+            String jwt;
             if(param.getIsRemember()) {
                 //默认记住7+3天
-                String jwt = JwtUtil.generateToken(param.getUsername(), 60L * 24 * 10);
-                Cookie cookie = new Cookie("token",jwt);
-                cookie.setMaxAge(60*60*24*7);
-                cookie.setPath("/");
-                response.addCookie(cookie);
+                jwt = JwtUtil.generateToken(param.getUsername(), 60L * 24 * 7);
+            } else {
+                jwt = JwtUtil.generateToken(param.getUsername(), 60L * 24 * 1);
             }
+            Cookie cookie = new Cookie("token",jwt);
+            cookie.setMaxAge(60*60*24*7);
+            cookie.setPath("/");
+            response.addCookie(cookie);
         }
         else {
             return RestResult.fail(0,"password is not correct");
