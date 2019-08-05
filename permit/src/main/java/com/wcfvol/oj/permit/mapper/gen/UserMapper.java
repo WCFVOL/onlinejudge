@@ -21,6 +21,7 @@ public interface UserMapper {
      */
     int insertSelective(UserPO record);
 
+
     /**
      *
      * @mbg.generated 2019-08-05
