@@ -1,0 +1,5 @@
+com/wcfvol/oj/permit/aop/AuthCheck.class
+com/wcfvol/oj/permit/annotation/Authority.class
+com/wcfvol/oj/permit/enums/Roles.class
+com/wcfvol/oj/permit/bean/TestBean.class
+com/wcfvol/oj/permit/CommonConfig.class

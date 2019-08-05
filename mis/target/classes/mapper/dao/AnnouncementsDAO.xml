@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wcfvol.oj.mis.mapper.dao.AnnouncementsDAO">
+    <select id="queryAll" resultType="com.wcfvol.oj.mis.pojo.data.Announcements">
+        select * from announcements order by date desc
+    </select>
+    <insert id="addAnnouncement" parameterType="com.wcfvol.oj.mis.pojo.data.Announcements">
+        insert into announcements(
+        title, date, author, content
+        )
+        values (
+        #{title},#{date},#{author},#{content}
+        )
+    </insert>
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.wcfvol.oj.mis.mapper.dao.ContestDAO">
+    <insert id="addContest" parameterType="com.wcfvol.oj.mis.pojo.data.Contest">
+        insert into contest(
+        title,problems,start_time,duration,writers,password
+        )
+        values (
+        #{title},#{problems},#{startTime},#{duration},#{writers},#{password}
+        )
+    </insert>
+    <select id="getContestList"
+            resultType="com.wcfvol.oj.mis.pojo.data.Contest">
+        select title,problems,acm_rank,oi_rank,start_time,duration,writers,password
+         from contest
+    </select>
+</mapper>
